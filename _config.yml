@@ -1,16 +1,17 @@
 # Jekyll configuration
 
-name: Xixia
-description: Welcome to Xixia！
+name: yucs
+description: Welcome to yucs
 
 # url is currently only used only for the RSS feed in feed.xml
-url: https://github.com/zxixia/jekyll-xixia
+url: https://github.com/yucs/yucs.github.io
 
 # baseurl will often be '', but for a project page on gh-pages, it needs to
 # be the project name.
 # *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
 #     run it like so: jekyll serve --baseurl=''
-baseurl: '/jekyll-xixia'
+# baseurl: ''
+
 ## default date_format
 date_format: 
   title: "%B-%-d-%Y"
@@ -18,7 +19,7 @@ date_format:
   categories: "%b-%Y"
   tag: "%b-%Y"
 # Language
-lan: "en" 
+lan: "cn" 
 
 paginate: 10
 
