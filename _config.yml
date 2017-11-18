@@ -1,7 +1,7 @@
 # Jekyll configuration
 
 name: yucs
-description: Welcome to yucs
+description: Welcome to yucs  <br /> 知识的搬运工  <br />    记录点滴
 
 # url is currently only used only for the RSS feed in feed.xml
 url: https://github.com/yucs/yucs.github.io
