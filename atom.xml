@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>yucs&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://yucs.github.io/"/>
+  <updated>2017-11-22T14:26:38.000Z</updated>
+  <id>https://yucs.github.io/</id>
+  
+  <author>
+    <name>yucs</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>密码学基本常识</title>
+    <link href="https://yucs.github.io/2017/11/22/2017-11-22-cryptology/"/>
+    <id>https://yucs.github.io/2017/11/22/2017-11-22-cryptology/</id>
+    <published>2017-11-22T09:14:57.000Z</published>
+    <updated>2017-11-22T14:26:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="密码学-基本常识（《图解密码技术》笔记》）"><a href="#密码学-基本常识（《图解密码技术》笔记》）" class="headerlink" title="密码学 基本常识（《图解密码技术》笔记》）"></a>密码学 基本常识（《图解密码技术》笔记》）</h1><h2 id="技术概要"><a href="#技术概要" class="headerlink" title="技术概要"></a>技术概要</h2><p><img src="/picture/1.5.png" alt="密码技术概要图"> </p><ul><li><p>伪随机生成器：是一种能够模拟生产随机数列的算法,承担着密钥生成的重要职责。如果生成随机数的算法不好，窃听者就能推测出密钥，从而带来通信机密性下降的风险。</p></li><li><p>数字签名：是一种能够保证完整性，提供认证，并防止否认的密码技术。</p></li><li><p>对称密码： 在加密和解密，使用同一个密钥的方式。</p></li><li><p>公钥密码/非对称密码: 是指在加密和解密时使用不同密钥的方式。</p></li><li><p>单向散列函数/哈希值/密码校验/消息摘要:所保证的并不是机密性，而是完整性.</p></li></ul><h2 id="密码与信息安全常识"><a href="#密码与信息安全常识" class="headerlink" title="密码与信息安全常识"></a>密码与信息安全常识</h2><ul><li>不要使用保密的密码算法<ul><li>密码算法的秘密，早晚会公诸于世！一旦密码，算法，详细信息被披露，依靠对算法本身进行保密，来确保机密信息的，密码系统也就土崩瓦解了。</li><li>开发高强度的密码算法是非常困难的。现在世界上公认的被认为强度较高的密码算法，几乎都是通过密码破译者长期还是破解未果而终活下来的。</li><li>试图通过对密码算法本身进行保密，来确保安全性的行为，一般称之为隐蔽性安全性，这种行为是危险且愚蠢的。</li></ul></li></ul><ul><li><p>使用低强度的密码比不进行任何加密更危险</p><ul><li>容易让用户通过“密码”这个词，获得一种错误的安全感，进而导致用户在处理一些机密信息的时候麻痹大意。</li></ul></li><li><p>任何密码总有一天都会被破解</p></li><li>密码只是信息安全的一部分</li></ul><h2 id="对称密码"><a href="#对称密码" class="headerlink" title="对称密码"></a>对称密码</h2><h2 id="公钥密码"><a href="#公钥密码" class="headerlink" title="公钥密码"></a>公钥密码</h2><h2 id="分组密码的模式（迭代）"><a href="#分组密码的模式（迭代）" class="headerlink" title="分组密码的模式（迭代）"></a>分组密码的模式（迭代）</h2><h2 id="单向散列函数"><a href="#单向散列函数" class="headerlink" title="单向散列函数"></a>单向散列函数</h2><h2 id="数字签名-和-证书"><a href="#数字签名-和-证书" class="headerlink" title="数字签名 和 证书"></a>数字签名 和 证书</h2>]]></content>
+    
+    <summary type="html">
+    
+      《图解密码技术》笔记
+    
+    </summary>
+    
+      <category term="Other" scheme="https://yucs.github.io/categories/Other/"/>
+    
+    
+      <category term="密码 区块链" scheme="https://yucs.github.io/tags/%E5%AF%86%E7%A0%81-%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+</feed>
