@@ -141,10 +141,10 @@ font:
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 social:
-  GitHub: https://github.com/SylvanasSun
-#  微博: http://weibo.com/1666202315/profile?rightmod=1&wvr=6&mod=personinfo
+  GitHub: https://github.com/yucs
+  微博: https://weibo.com/u/5514288663
 #  知乎: https://www.zhihu.com/people/sylvanas-sun/activities
-
+ 
 
 # Social Links Icons
 # Icon Mapping:
@@ -157,8 +157,8 @@ social_icons:
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
  # Twitter: twitter
- # Weibo: weibo
-
+  Weibo: weibo
+  
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.jpg

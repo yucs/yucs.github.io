@@ -2,7 +2,7 @@
 layout:     post
 title:      "密码学基本常识"
 subtitle:   "《图解密码技术》笔记"
-date:       2016-07-12 18:00
+date:       2017-11-22
 author:     "yucs"
 catalog:    true
 categories: 
