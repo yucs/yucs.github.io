@@ -83,6 +83,7 @@ scheme: Muse
 # scheme: Pisces
 
 
+
 # ---------------------------------------------------------------
 # Font Settings
 # - Find fonts on Google Fonts (https://www.google.com/fonts)
@@ -625,6 +626,9 @@ vendors:
   han:
 
 
+reward_comment: 如果觉得我写的帮助到您，请随意打赏，是我最大的肯定和动力
+wechatpay: /picture/WechatIMG2.jpeg
+#alipay: /images/avatar.png
 # Assets
 css: css
 js: js
