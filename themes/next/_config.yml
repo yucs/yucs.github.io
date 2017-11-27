@@ -626,7 +626,7 @@ vendors:
   han:
 
 
-reward_comment: 如果觉得我写的帮助到您，请随意打赏，是我最大的肯定和动力
+reward_comment: <strong><div style="color:#00F">如果觉得我写的帮助到您，请随意打赏，是我最大的肯定和动力</div> </strong>
 wechatpay: /picture/WechatIMG2.jpeg
 #alipay: /images/avatar.png
 # Assets
