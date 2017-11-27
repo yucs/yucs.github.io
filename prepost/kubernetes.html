@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="安装实践 Kubernetes 1.8.x 全手动安装教程   特点： 手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解； 组件程序从 各项目github上发布的release 下载; 配置文件在 github.com/kairen/kairen.github.io 博主项目下维护；  注意点： 部署">
+<meta name="description" content="安装实践kubeadm 边安装边看架构图：  Kubernetes 1.8.x 全手动安装教程特点： 手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解； 组件程序从 各项目github上发布的release 下载; 配置文件在 github.com/kairen/kairen.github.io 博主">
 <meta property="og:type" content="website">
 <meta property="og:title" content="yucs&#39;s Blog">
 <meta property="og:url" content="https://yucs.github.io/prepost/kubernetes.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="安装实践 Kubernetes 1.8.x 全手动安装教程   特点： 手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解； 组件程序从 各项目github上发布的release 下载; 配置文件在 github.com/kairen/kairen.github.io 博主项目下维护；  注意点： 部署过程，容易让人眼乱的是证书部分，参考Kubernetes安装之证书验证； 出问题">
+<meta property="og:description" content="安装实践kubeadm 边安装边看架构图：  Kubernetes 1.8.x 全手动安装教程特点： 手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解； 组件程序从 各项目github上发布的release 下载; 配置文件在 github.com/kairen/kairen.github.io 博主项目下维护；  注意点： 部署过程，容易让人眼乱的是证书部分，参考Kuberne">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/prepost/picture/k8s-arch.png">
-<meta property="og:updated_time" content="2017-11-23T05:08:55.000Z">
+<meta property="og:updated_time" content="2017-11-27T06:42:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yucs&#39;s Blog">
-<meta name="twitter:description" content="安装实践 Kubernetes 1.8.x 全手动安装教程   特点： 手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解； 组件程序从 各项目github上发布的release 下载; 配置文件在 github.com/kairen/kairen.github.io 博主项目下维护；  注意点： 部署过程，容易让人眼乱的是证书部分，参考Kubernetes安装之证书验证； 出问题">
+<meta name="twitter:description" content="安装实践kubeadm 边安装边看架构图：  Kubernetes 1.8.x 全手动安装教程特点： 手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解； 组件程序从 各项目github上发布的release 下载; 配置文件在 github.com/kairen/kairen.github.io 博主项目下维护；  注意点： 部署过程，容易让人眼乱的是证书部分，参考Kuberne">
 <meta name="twitter:image" content="https://yucs.github.io/prepost/picture/k8s-arch.png">
 
 
@@ -305,25 +305,22 @@
 
     
     
-      <h1 id="安装实践"><a href="#安装实践" class="headerlink" title="安装实践"></a>安装实践</h1><ul>
-<li><a href="https://www.kubernetes.org.cn/3096.html" target="_blank" rel="noopener">Kubernetes 1.8.x 全手动安装教程</a> </li>
+      <h1 id="安装实践"><a href="#安装实践" class="headerlink" title="安装实践"></a>安装实践</h1><h2 id="kubeadm"><a href="#kubeadm" class="headerlink" title="kubeadm"></a>kubeadm</h2><ul>
+<li>边安装边看架构图：<br><img src="./picture/k8s-arch.png" alt=""></li>
 </ul>
-<h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><ul>
+<h2 id="Kubernetes-1-8-x-全手动安装教程"><a href="#Kubernetes-1-8-x-全手动安装教程" class="headerlink" title="Kubernetes 1.8.x 全手动安装教程"></a><a href="https://www.kubernetes.org.cn/3096.html" target="_blank" rel="noopener">Kubernetes 1.8.x 全手动安装教程</a></h2><h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><ul>
 <li>手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解；</li>
 <li>组件程序从 各项目github上发布的release 下载;</li>
 <li>配置文件在 github.com/kairen/kairen.github.io 博主项目下维护；</li>
 </ul>
-<h5 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h5><ul>
+<h2 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h2><ul>
 <li>部署过程，容易让人眼乱的是证书部分，参考<a href="https://www.kubernetes.org.cn/1861.html" target="_blank" rel="noopener">Kubernetes安装之证书验证</a>；</li>
 <li>出问题，通过journalctl -f -u XX 等查看服务日记；(eg:下载镜像可能要翻墙)</li>
-<li>边安装边看架构图：<br><img src="./picture/k8s-arch.png" alt=""></li>
 </ul>
-<h5 id="其他部署参考："><a href="#其他部署参考：" class="headerlink" title="其他部署参考："></a>其他部署参考：</h5><p><a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster" target="_blank" rel="noopener">和我一步步部署 kubernetes 集群</a></p>
-<ul>
-<li><h1 id="原理架构"><a href="#原理架构" class="headerlink" title="原理架构"></a>原理架构</h1><p>主要参考<a href="https://kubernetes.feisky.xyz/" target="_blank" rel="noopener">Kubernetes指南</a><br>特点：<br>-</p>
-</li>
-</ul>
-<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1>
+<h2 id="其他部署参考："><a href="#其他部署参考：" class="headerlink" title="其他部署参考："></a>其他部署参考：</h2><p><a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster" target="_blank" rel="noopener">和我一步步部署 kubernetes 集群</a></p>
+<h1 id="原理架构"><a href="#原理架构" class="headerlink" title="原理架构"></a>原理架构</h1><p> 主要参考<a href="https://kubernetes.feisky.xyz/" target="_blank" rel="noopener">Kubernetes指南</a><br> 特点：</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p> <a href="http://dockone.io/article/2885" target="_blank" rel="noopener">Kubernetes调度详解</a></p>
+
     
   </div>
 
@@ -389,7 +386,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -473,7 +470,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装实践"><span class="nav-number">1.</span> <span class="nav-text">安装实践</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点："><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意点："><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">注意点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他部署参考："><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">其他部署参考：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理架构"><span class="nav-number">2.</span> <span class="nav-text">原理架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">3.</span> <span class="nav-text">源码分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装实践"><span class="nav-number">1.</span> <span class="nav-text">安装实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#kubeadm"><span class="nav-number">1.1.</span> <span class="nav-text">kubeadm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kubernetes-1-8-x-全手动安装教程"><span class="nav-number">1.2.</span> <span class="nav-text">Kubernetes 1.8.x 全手动安装教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点："><span class="nav-number">1.3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点："><span class="nav-number">1.4.</span> <span class="nav-text">注意点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他部署参考："><span class="nav-number">1.5.</span> <span class="nav-text">其他部署参考：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理架构"><span class="nav-number">2.</span> <span class="nav-text">原理架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">3.</span> <span class="nav-text">资源</span></a></li></ol></div>
             
 
           </div>
