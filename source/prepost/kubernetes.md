@@ -1,34 +1,25 @@
 
 
-# 安装实践
-## kubeadm
-- 边安装边看架构图：  
+# kubeadm安装实践
+- kubernetes架构图：  
   ![](./picture/k8s-arch.png)
+- [Kubernetes指南 之 kubeadm部署](https://github.com/feiskyer/kubernetes-handbook/blob/master/deploy/kubeadm.md)
 
-## [Kubernetes 1.8.x 全手动安装教程](https://www.kubernetes.org.cn/3096.html) 
+## 原理
+- [Kubernetes指南 之 kubeadm工作原理](https://github.com/feiskyer/kubernetes-handbook/blob/master/components/kubeadm.md)
+- [kubeadm工作机制分析](http://blog.csdn.net/waltonwang/article/details/70162993)
+- [源码分析之kubeadm](http://blog.csdn.net/u010278923/article/details/70225173)
 
-## 特点：
-  - 手动安装，熟悉了解 Kubernetes 创建流程和细节，加深理解；
-  - 组件程序从 各项目github上发布的release 下载;
-  - 配置文件在 github.com/kairen/kairen.github.io 博主项目下维护；
-
-## 注意点：
-- 部署过程，容易让人眼乱的是证书部分，参考[Kubernetes安装之证书验证](https://www.kubernetes.org.cn/1861.html)；
--  出问题，通过journalctl -f -u XX 等查看服务日记；(eg:下载镜像可能要翻墙)
-
-
-## 其他部署参考：
-[和我一步步部署 kubernetes 集群](https://github.com/opsnull/follow-me-install-kubernetes-cluster)
- 
+# 视屏教程
+[ibm Kubernentes系列](https://www.ibm.com/developerworks/community/wikis/home?lang=zh#!/wiki/W30b0c771924e_49d2_b3b7_88a2a2bc2e43/page/IBM%E5%BC%80%E6%BA%90%E6%8A%80%E6%9C%AF%E5%BE%AE%E8%AE%B2%E5%A0%82)
  
 # 原理架构
- 主要参考[Kubernetes指南](https://kubernetes.feisky.xyz/)
- 特点：
+  [Kubernetes指南](https://github.com/feiskyer/kubernetes-handbook)
+ 
+# 组件核心之etcd 
+
  
  
-
-
-# 资源
-
+[Kubernetes API 分析 ( Kube-apiserver )](https://www.kubernetes.org.cn/3119.html)
  [Kubernetes调度详解](http://dockone.io/article/2885)
  
