@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://yucs.github.io/picture/RAS.png">
 <meta property="og:image" content="https://yucs.github.io/picture/加密流程.png">
 <meta property="og:image" content="https://yucs.github.io/picture/解密流程.png">
-<meta property="og:updated_time" content="2017-11-26T12:13:06.000Z">
+<meta property="og:updated_time" content="2017-12-02T14:17:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解密码技术》笔记（一）">
 <meta name="twitter:description" content="技术概要密码技术概要图  术语 伪随机生成器：是一种能够模拟生产随机数列的算法,承担着密钥生成的重要职责。如果生成随机数的算法不好，窃听者就能推测出密钥，从而带来通信机密性下降的风险。  数字签名：是一种能够保证完整性，提供认证，并防止否认的密码技术。  对称密码： 在加密和解密，使用同一个密钥的方式。  公钥密码/非对称密码: 是指在加密和解密时使用不同密钥的方式。  单向散列函数/哈希值/密码">
@@ -494,6 +494,9 @@
 <li>使用公钥密码能解决密钥配送的问题，现代计算机和互联网所使用的密码技术都得益于公钥密码。</li>
 <li>公钥密码是基于数学上的困难的问题来保证机密性。可见，对称密码和公钥密码是两种根本不同的思路。</li>
 <li>公钥密码解决了密钥配送问题，但针对公钥密码能够进行中间人攻击。</li>
+<li>密钥的价值等价于明文的价值</li>
+<li>密钥生成：生成密钥的最好方法是使用随机数，因为密钥需要具备不易被她人推测的性质。密码学用途的伪随机数生成器必须是专门针对密码学用途而设计的。 </li>
+<li>密码配送：使用公钥密码外，还有一种是Diffie-Hellman 密钥交换。</li>
 </ul>
 <h2 id="高深的密码学-复杂的区块链，其实也可以通俗易懂"><a href="#高深的密码学-复杂的区块链，其实也可以通俗易懂" class="headerlink" title="高深的密码学+复杂的区块链，其实也可以通俗易懂:"></a><a href="http://rdc.hundsun.com/portal/article/750.html" target="_blank" rel="noopener">高深的密码学+复杂的区块链，其实也可以通俗易懂</a>:</h2><ul>
 <li>RSA又慢又不安全，所以比特币和以太坊都不采用，而是使用了更安全的椭圆曲线算法。</li>

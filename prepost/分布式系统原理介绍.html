@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="区块链," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -95,38 +95,17 @@
 
 
 
-<meta name="description" content="单向散列函数 可以保证消息的完整性，但不能对消息进行认证 （可以辨别出篡改，无法辨别出伪装） 散列值得长度是固定的，和消息长度无关。 性质： 根据任意长度的消息计算出固定长度的散列值。 能够快速计算出散列值。   如果两个消息体产生同个散列值称为碰撞,密码技术中所使用的单向散列函数必须具备抗碰撞性。 哪怕只有1比特的改">
-<meta name="keywords" content="区块链">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《图解密码技术》笔记（二）">
-<meta property="og:url" content="https://yucs.github.io/2017/12/01/2017-12-1-cryptology2/index.html">
+<meta name="description" content="分布式系统基本常识-异常  分布式系统核心问题之一就是处理各种异常(failure)情况">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yucs&#39;s Blog">
+<meta property="og:url" content="https://yucs.github.io/prepost/分布式系统原理介绍.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="单向散列函数 可以保证消息的完整性，但不能对消息进行认证 （可以辨别出篡改，无法辨别出伪装） 散列值得长度是固定的，和消息长度无关。 性质： 根据任意长度的消息计算出固定长度的散列值。 能够快速计算出散列值。   如果两个消息体产生同个散列值称为碰撞,密码技术中所使用的单向散列函数必须具备抗碰撞性。 哪怕只有1比特的改变，也必须有很高的概率产生不同的散列值  具备单向性：   实际应用： MD5来">
+<meta property="og:description" content="分布式系统基本常识-异常  分布式系统核心问题之一就是处理各种异常(failure)情况">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yucs.github.io/picture/单向散列函数.png">
-<meta property="og:image" content="https://yucs.github.io/picture/散列值碰撞.png">
-<meta property="og:image" content="https://yucs.github.io/picture/散列值单向性.png">
-<meta property="og:image" content="https://yucs.github.io/picture/密钥使用方式.png">
-<meta property="og:image" content="https://yucs.github.io/picture/密钥加密.png">
-<meta property="og:image" content="https://yucs.github.io/picture/数字签名.png">
-<meta property="og:image" content="https://yucs.github.io/picture/数字签名流程.png">
-<meta property="og:image" content="https://yucs.github.io/picture/数字签名流程2.png">
-<meta property="og:image" content="https://yucs.github.io/picture/RAS数字签名.png">
-<meta property="og:image" content="https://yucs.github.io/picture/证书认证.png">
-<meta property="og:image" content="https://yucs.github.io/picture/X.509.png">
-<meta property="og:image" content="https://yucs.github.io/picture/PKI.png">
-<meta property="og:image" content="https://yucs.github.io/picture/PKI2.png">
-<meta property="og:image" content="https://yucs.github.io/picture/PKI3.png">
-<meta property="og:image" content="https://yucs.github.io/picture/随机数.png">
-<meta property="og:image" content="https://yucs.github.io/picture/伪随机生成器.png">
-<meta property="og:image" content="https://yucs.github.io/picture/线性同余法.png">
-<meta property="og:image" content="https://yucs.github.io/picture/密码实现伪随机生成器.png">
-<meta property="og:image" content="https://yucs.github.io/picture/密码工具箱小结.png">
-<meta property="og:updated_time" content="2017-12-03T02:22:55.000Z">
+<meta property="og:updated_time" content="2017-12-02T14:00:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《图解密码技术》笔记（二）">
-<meta name="twitter:description" content="单向散列函数 可以保证消息的完整性，但不能对消息进行认证 （可以辨别出篡改，无法辨别出伪装） 散列值得长度是固定的，和消息长度无关。 性质： 根据任意长度的消息计算出固定长度的散列值。 能够快速计算出散列值。   如果两个消息体产生同个散列值称为碰撞,密码技术中所使用的单向散列函数必须具备抗碰撞性。 哪怕只有1比特的改变，也必须有很高的概率产生不同的散列值  具备单向性：   实际应用： MD5来">
-<meta name="twitter:image" content="https://yucs.github.io/picture/单向散列函数.png">
+<meta name="twitter:title" content="yucs&#39;s Blog">
+<meta name="twitter:description" content="分布式系统基本常识-异常  分布式系统核心问题之一就是处理各种异常(failure)情况">
 
 
 
@@ -154,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://yucs.github.io/2017/12/01/2017-12-1-cryptology2/"/>
+  <link rel="canonical" href="https://yucs.github.io/prepost/分布式系统原理介绍.html"/>
 
 
 
 
 
-  <title>《图解密码技术》笔记（二） | yucs's Blog</title>
+  <title> | yucs's Blog</title>
   
 
 
@@ -314,325 +293,22 @@
             
 
   <div id="posts" class="posts-expand">
-    
+  <header class="post-header">
 
-  
+	<h1 class="post-title" itemprop="name headline"></h1>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yucs.github.io/2017/12/01/2017-12-1-cryptology2/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yucs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yucs's Blog">
-    </span>
+</header>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">《图解密码技术》笔记（二）</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T00:00:00+08:00">
-                2017-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/区块链/" itemprop="url" rel="index">
-                    <span itemprop="name">区块链</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/01/2017-12-1-cryptology2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/01/2017-12-1-cryptology2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/12/01/2017-12-1-cryptology2/" class="leancloud_visitors" data-flag-title="《图解密码技术》笔记（二）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="单向散列函数"><a href="#单向散列函数" class="headerlink" title="单向散列函数"></a>单向散列函数</h1><ul>
-<li>可以保证消息的完整性，但不能对消息进行认证 （可以辨别出篡改，无法辨别出伪装）</li>
-<li>散列值得长度是固定的，和消息长度无关。<br><img src="/picture/单向散列函数.png" alt="单向散列函数"></li>
-<li>性质：<ul>
-<li>根据任意长度的消息计算出固定长度的散列值。</li>
-<li>能够快速计算出散列值。  </li>
-<li>如果两个消息体产生同个散列值称为碰撞,密码技术中所使用的单向散列函数必须具备抗碰撞性。</li>
-<li><strong>哪怕只有1比特的改变，也必须有很高的概率产生不同的散列值</strong></li>
-<li><img src="/picture/散列值碰撞.png" alt="散列值碰撞"></li>
-<li>具备单向性：<br><img src="/picture/散列值单向性.png" alt="散列值单向性"></li>
-</ul>
-</li>
-<li>实际应用：<ul>
-<li>MD5来验证是否同个文件软件。</li>
-<li>数字签名处理过程非常耗时，因此一般不会对整个消息内容直接进行数字签名，而是先通过单向散列函数计算出消息的散列值，然后再对整个散列值进行数字签名。</li>
-<li>SHA-1的抗碰撞性已被攻破。</li>
-<li>SHA-256,SHA-384,SHA-512这些统称SHA-2，尚未被攻破。</li>
-<li>SHA3简介：由于近年来对传统常用Hash 函数如MD4、MD5、SHA0、SHA1、RIPENMD 等的成功攻击2012年10月2日，Keccak被选为NIST竞赛的胜利者， 成为SHA-3。</li>
-</ul>
-</li>
-</ul>
-<h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><ul>
-<li><p>公钥密码和数字签名：<br><img src="/picture/密钥使用方式.png" alt="密钥使用方式"><br><img src="/picture/密钥加密.png" alt="密钥加密"><br><img src="/picture/数字签名.png" alt="数字签名"></p>
-</li>
-<li><p>数字签名是对消息的散列值签名：<br><img src="/picture/数字签名流程.png" alt="数字签名流程"><br><img src="/picture/数字签名流程2.png" alt="数字签名流程2"> </p>
-</li>
-<li>RAS的数字签名和验证：<br><img src="/picture/RAS数字签名.png" alt="RAS数字签名"></li>
-<li>数字签名不能保证机密性，在数字签名中，只有发送者才持有生成签名的私钥，防止否认。</li>
-<li>对称密码的密钥是机密性的精华，单向散列函数的散列值是完整性的精华。</li>
-<li>数字签名是非常重要的认证技术，但前提是用于验证签名的发送者的公钥没有被伪造，即要确认公钥是否合法，可以对公钥施加数字签名，之就是证书。</li>
-</ul>
-<h1 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h1><p>公钥证书（public-Key Certificate PKC）由可信的认证机构（certification Authority ,CA）施加数字签名。公钥证书也简称证书。</p>
+      <h1 id="分布式系统基本常识"><a href="#分布式系统基本常识" class="headerlink" title="分布式系统基本常识"></a>分布式系统基本常识</h1><p>-异常</p>
 <ul>
-<li><p>认证例子：<br><img src="/picture/证书认证.png" alt="证书认证"></p>
-</li>
-<li><p>证书标准规范X.509:<br><img src="/picture/X.509.png" alt="X.509"></p>
-</li>
-</ul>
-<p>简单例子：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成证书</span></span><br><span class="line">openssl genrsa -out ca/ca-key.pem 1024  </span><br><span class="line"><span class="comment">#查看证书信息</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> cert.pem -noout -text</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>公钥基础设施（PKI）<br>PKI(public-key infrastructure)是为了能够有效地运用公钥而制定的一系列规范和规格的总称。</p>
-<ul>
-<li><p>组成要素： 用户：使用PKI的人，认证机构（CA）：颁发证书的人 ， 仓库：保存证书的数据库.<br><img src="/picture/PKI.png" alt="pki">   </p>
-</li>
-<li><p>CA的工作：<br><img src="/picture/PKI2.png" alt="pki2"></p>
-</li>
-<li><p>CRL(Certificate Revocation list): 证书作废清单，当用户的私钥丢失，被盗是，认证机构需要对证书进行作废。</p>
-</li>
-</ul>
-</li>
-<li><p>认证机构的层次：<br><img src="/picture/PKI3.png" alt="pki3"></p>
-</li>
-<li><p>其他参考：</p>
-<ul>
-<li><a href="http://www.cnblogs.com/JeffreySun/archive/2010/06/24/1627247.html" target="_blank" rel="noopener">数字证书原理</a>：文中首先解释了加密解密的一些基础知识和概念，然后通过一个加密通信过程的例子说明了加密算法的作用，以及数字证书的出现所起的作用。</li>
-<li><a href="http://www.cnblogs.com/guogangj/p/4118605.html" target="_blank" rel="noopener">那些证书相关的玩意儿:X.509,PEM,DER,CRT,CER,KEY,CSR,P12</a><ul>
-<li>CSR（Certificate Signing Request）：即证书签名请求,这个并不是证书,而是向权威证书颁发机构获得签名证书的申请。</li>
-<li>PEM（Privacy Enhanced Mail）,打开看文本格式,以”—–BEGIN…”开头, “—–END…”结尾,内容是BASE64编码.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="随机数-不可预测性的源泉"><a href="#随机数-不可预测性的源泉" class="headerlink" title="随机数-不可预测性的源泉"></a>随机数-不可预测性的源泉</h1><ul>
-<li>随机数用来生成对称密钥，公钥密钥。</li>
-<li>性质<ul>
-<li>随机性：不存在统计学偏差，完全杂乱的数列</li>
-<li>不可预测性：不能从过去的数列推测出下一个出现的数</li>
-<li>不可重复性：除非将数列本身保存下来，否则不能重现相同的数列.</li>
-<li><img src="/picture/随机数.png" alt="随机数"></li>
-<li>伪随机数生成器<ul>
-<li>根据外部输入的种子生产伪随机数列<br><img src="/picture/伪随机生成器.png" alt="伪随机生成器"></li>
-<li>伪随机数生成器是公开，但种子需要自己保密，这类似密码算法是公开，而密钥要自己保密。</li>
-<li>具体的伪随机数生成器</li>
-<li>很多伪随机数生成器的库函数使用线性同余法编写，但是不具备不可预测性，不能用于密码技术。<br><img src="/picture/线性同余法.png" alt="线性同余法"> </li>
-<li>用密码实现伪随机数生成器<br><img src="/picture/密码实现伪随机生成器.png" alt="密码实现伪随机生成器"> </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p> <img src="/picture/密码工具箱小结.png" alt="密码工具箱小结"> </p>
-<ul>
-<li>密钥是机密性的精华</li>
-<li>散列值是完整性的精华</li>
-<li>种子是不可预测性的精华</li>
-<li>如果量子密码计算机进入实用领域，就能产生完美的密码技术</li>
-<li>如果量子计算机比量子密码先进入实用领域，则使用目前的密码技术所产生的密文将全部破译。</li>
-<li>即使真的拥有完美的密码技术，也不可能实现完美的安全性，因为必须会有人类-即不完美的我们参与其中。 </li>
+<li>分布式系统核心问题之一就是处理各种异常(failure)情况</li>
 </ul>
 
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div><strong><div style="color:#00F">如果觉得我写的帮助到您，请随意打赏，是我最大的肯定和动力</div> </strong></div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/picture/WechatIMG2.jpeg" alt="yucs WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-    </div>
-  </div>
-
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/区块链/" rel="tag"># 区块链</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/11/25/2017-11-25-cryptology/" rel="next" title="《图解密码技术》笔记（一）">
-                <i class="fa fa-chevron-left"></i> 《图解密码技术》笔记（一）
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!--MOB SHARE BEGIN-->
- <div class="-mob-share-ui-button -mob-share-open">分享</div>
- <div class="-mob-share-ui" style="display: none">
-     <ul class="-mob-share-list">
-         <li class="-mob-share-weibo"><p>新浪微博</p></li>
-         <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
-         <li class="-mob-share-qzone"><p>QQ空间</p></li>
-         <li class="-mob-share-qq"><p>QQ好友</p></li>
-         <li class="-mob-share-weixin"><p>微信</p></li>
-         <li class="-mob-share-douban"><p>豆瓣</p></li>
-         <li class="-mob-share-renren"><p>人人网</p></li>
-         <li class="-mob-share-kaixin"><p>开心网</p></li>
-         <li class="-mob-share-facebook"><p>Facebook</p></li>
-         <li class="-mob-share-twitter"><p>Twitter</p></li>
-         <li class="-mob-share-pocket"><p>Pocket</p></li>
-         <li class="-mob-share-google"><p>Google+</p></li>
-         <li class="-mob-share-youdao"><p>有道云笔记</p></li>
-         <li class="-mob-share-mingdao"><p>明道</p></li>
-         <li class="-mob-share-pengyou"><p>朋友网</p></li>
-         <li class="-mob-share-tumblr"><p>Tumblr</p></li>
-         <li class="-mob-share-instapaper"><p>Instapaper</p></li>
-         <li class="-mob-share-linkedin"><p>LinkedIn</p></li>
-     </ul>
-    <div class="-mob-share-close">取消</div>
- </div>
- <div class="-mob-share-ui-bg"></div>
- <script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=1f85dd74c1b48"></script>
- <!--MOB SHARE END-->
-      
-    </div>
+    
   </div>
 
 
@@ -781,7 +457,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单向散列函数"><span class="nav-number">1.</span> <span class="nav-text">单向散列函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数字签名"><span class="nav-number">2.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#证书"><span class="nav-number">3.</span> <span class="nav-text">证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机数-不可预测性的源泉"><span class="nav-number">4.</span> <span class="nav-text">随机数-不可预测性的源泉</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式系统基本常识"><span class="nav-number">1.</span> <span class="nav-text">分布式系统基本常识</span></a></li></ol></div>
             
 
           </div>
@@ -911,10 +587,10 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-
+  
 
   
 
@@ -935,9 +611,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://yucs.github.io/2017/12/01/2017-12-1-cryptology2/';
-          this.page.identifier = '2017/12/01/2017-12-1-cryptology2/';
-          this.page.title = '《图解密码技术》笔记（二）';
+          this.page.url = 'https://yucs.github.io/prepost/分布式系统原理介绍.html';
+          this.page.identifier = 'prepost/分布式系统原理介绍.html';
+          this.page.title = '';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://http-yucs-github-io.disqus.com/embed.js';
