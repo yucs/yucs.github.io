@@ -67,7 +67,7 @@ openssl x509 -in cert.pem -noout -text
 
 - 公钥基础设施（PKI）
   PKI(public-key infrastructure)是为了能够有效地运用公钥而制定的一系列规范和规格的总称。
-  - 组成要素： 用户：使用PKI的人，认证机构（CA）：颁发证书的人 ， 仓库：保存证书的数据库.
+  - 组成要素： 用户：使用PKI的人，认证机构（CA）：颁发证书的人 ， 仓库：保存证书的数据库：
   ![pki](/picture/PKI.png)   
  
  - CA的工作：
