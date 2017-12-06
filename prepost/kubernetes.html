@@ -95,19 +95,18 @@
 
 
 
-<meta name="description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  视屏教程ibm Kubernentes系列 原理架构  Kubernetes指南 组件核心之etc">
+<meta name="description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  原理架构  Kubernetes指南 组件核心之etcd Kubernetes调度详解  kube">
 <meta property="og:type" content="website">
 <meta property="og:title" content="yucs&#39;s Blog">
 <meta property="og:url" content="https://yucs.github.io/prepost/kubernetes.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  视屏教程ibm Kubernentes系列 原理架构  Kubernetes指南 组件核心之etcd api接口  Kubernetes API 分析 ( Kube-apiser">
+<meta property="og:description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  原理架构  Kubernetes指南 组件核心之etcd Kubernetes调度详解  kubernetes extend API两种方式：  api接口  Kubernete">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/prepost/picture/k8s-arch.png">
-<meta property="og:image" content="https://yucs.github.io/picture/CNI.png">
-<meta property="og:updated_time" content="2017-12-02T01:35:22.000Z">
+<meta property="og:updated_time" content="2017-12-06T08:48:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yucs&#39;s Blog">
-<meta name="twitter:description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  视屏教程ibm Kubernentes系列 原理架构  Kubernetes指南 组件核心之etcd api接口  Kubernetes API 分析 ( Kube-apiser">
+<meta name="twitter:description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  原理架构  Kubernetes指南 组件核心之etcd Kubernetes调度详解  kubernetes extend API两种方式：  api接口  Kubernete">
 <meta name="twitter:image" content="https://yucs.github.io/prepost/picture/k8s-arch.png">
 
 
@@ -315,103 +314,25 @@
 <li><a href="http://blog.csdn.net/waltonwang/article/details/70162993" target="_blank" rel="noopener">kubeadm工作机制分析</a></li>
 <li><a href="http://blog.csdn.net/u010278923/article/details/70225173" target="_blank" rel="noopener">源码分析之kubeadm</a></li>
 </ul>
-<h1 id="视屏教程"><a href="#视屏教程" class="headerlink" title="视屏教程"></a>视屏教程</h1><p><a href="https://www.ibm.com/developerworks/community/wikis/home?lang=zh#!/wiki/W30b0c771924e_49d2_b3b7_88a2a2bc2e43/page/IBM%E5%BC%80%E6%BA%90%E6%8A%80%E6%9C%AF%E5%BE%AE%E8%AE%B2%E5%A0%82" target="_blank" rel="noopener">ibm Kubernentes系列</a></p>
 <h1 id="原理架构"><a href="#原理架构" class="headerlink" title="原理架构"></a>原理架构</h1><p>  <a href="https://github.com/feiskyer/kubernetes-handbook" target="_blank" rel="noopener">Kubernetes指南</a></p>
-<h1 id="组件核心之etcd"><a href="#组件核心之etcd" class="headerlink" title="组件核心之etcd"></a>组件核心之etcd</h1><p> api接口</p>
-<ul>
-<li><a href="https://www.kubernetes.org.cn/3119.html" target="_blank" rel="noopener">Kubernetes API 分析 ( Kube-apiserver )</a></li>
+<h1 id="组件核心之etcd"><a href="#组件核心之etcd" class="headerlink" title="组件核心之etcd"></a>组件核心之etcd</h1><ul>
 <li><a href="http://dockone.io/article/2885" target="_blank" rel="noopener">Kubernetes调度详解</a></li>
 </ul>
-<h1 id="编写CNI"><a href="#编写CNI" class="headerlink" title="编写CNI"></a>编写CNI</h1><p>背景：</p>
-<p>知其然所以然：</p>
-<p><a href="http://cizixs.com/2016/10/25/kubernetes-intro-kubelet" target="_blank" rel="noopener">kubernetes 简介：kubelet 和 pod</a></p>
-<p>原理分析：<br>kubelet </p>
+<h1 id="kubernetes-extend-API"><a href="#kubernetes-extend-API" class="headerlink" title="kubernetes extend API"></a>kubernetes extend API</h1><p>两种方式：</p>
+<p> api接口</p>
 <ul>
-<li>它的核心工作是监听 apiserver，一旦发现当前节点的 pod 配置发生变化，就根据最新的配置执行响应的动作，保证运行的 pod 状态和期望的一致。</li>
-<li>定时汇报当前节点的状态给 apiserver，以供调度的时候使用。</li>
-<li>镜像和容器的清理工作，保证节点上镜像不会占满磁盘空间，退出的容器不会占用太多资源<ul>
-<li>运行 HTTP Server，对外提供节点和 pod 信息，如果在 debug 模式下，还包括调试信息</li>
+<li><a href="https://www.kubernetes.org.cn/3119.html" target="_blank" rel="noopener">Kubernetes API 分析 ( Kube-apiserver )</a></li>
 </ul>
-</li>
-</ul>
-<h1 id="kubelet源码分析："><a href="#kubelet源码分析：" class="headerlink" title="kubelet源码分析："></a>kubelet源码分析：</h1><p><a href="http://cizixs.com/2017/06/06/kubelet-source-code-analysis-part-1" target="_blank" rel="noopener">kubelet 源码分析：启动流程</a> （v1.5.0版本)</p>
-<ul>
-<li>解析参数配置信息等初始化准备后， 创建kubeDeps这个对象：<ul>
-<li>其实它内部保存了 kubelet 各个重要组件的对象，之所以要把它作为参数传递，是为了实现 dependency injection。简单地说，就是把 kubelet 依赖的组件对象作为参数传进来，这样可以控制 kubelet 的行为。比如在测试的时候，只要构建 fake 的组件实现，就能很轻松进行测试。KubeDeps 包含的组件很多，下面列出一些：</li>
-<li>CAdvisorInterface：提供 cAdvisor 接口功能的组件，负责收集容器的监控信息</li>
-<li>DockerClient：docker 客户端，用来和 docker 交互</li>
-<li>KubeClient：apiserver 客户端，用来和 api server 通信</li>
-<li>Mounter：执行 mount 相关操作</li>
-<li>NetworkPlugins：网络插件，执行网络设置工作</li>
-<li>VolumePlugins：volume 插件，执行 volume 设置工作</li>
-</ul>
-</li>
-<li>RunKubelet 函数:<ul>
-<li>初始化各个对象，比如 eventBroadcaster，这样就能给 apiserver 发送 kubelet 的事件</li>
-<li>通过 builder 创建出来 Kubelet对象（pkg/kubelet/kubelet.go#NewMainKubelet）</li>
-<li>根据运行模式，运行 Kubelet对象，各种组件以 goroutine运行启动<ul>
-<li>异步事件驱动：syncLoop 是 kubelet 的主循环方法，它从不同的管道（文件、URL 和 apiserver）监听变化，并把它们汇聚起来。当有新的变化发生时，它会调用对应的处理函数，保证 pod 处于期望的状态。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>kubelet对象 中包含的重要对象：<ul>
-<li>podConfig：这个对象里面会从文件、网络和 apiserver 三个来源中汇聚节点要运行的 pod 信息，并通过管道发送出来，读取这个管道就能获取实时的 pod 最新配置</li>
-<li>runtime：容器运行时，对容器引擎（docker 或者 rkt）的一层封装，负责调用容器引擎接口管理容器的状态，比如启动、暂停、杀死容器等</li>
-<li>probeManager：如果 pod 配置了状态监测，那么 probeManager 会定时检查 pod 是否正常工作，并通过 statusManager 向 apiserver 更新 pod 的状态</li>
-<li>volumeManager：负责容器需要的 volume 管理。检测某个 volume 是否已经 mount、获取 pod 使用的 volume 等</li>
-<li>podWorkers：具体的执行者，每次有 pod 需要更新的时候都会发送给它</li>
-<li>podManager：缓存了 pod 的信息，是所有需要该信息都会去访问的地方</li>
-<li>nodeLister：能够读取 apiserver 中节点的信息</li>
-</ul>
-</li>
-</ul>
-<p><a href="http://cizixs.com/2017/06/07/kubelet-source-code-analysis-part-2" target="_blank" rel="noopener">kubelet 源码分析：pod 新建流程</a>（v1.5.0版本)：</p>
-<ul>
-<li>pod的创建顺序留意点：<ul>
-<li>创建 pod 的数据目录，存放 volume 和 plugin 信息</li>
-<li>如果定义了 PV，等待所有的 volume mount 完成（volumeManager 会在后台做这些事情）</li>
-<li>如果有 image secrets，去 apiserver 获取对应的 secrets 数据</li>
-<li>调用 container runtime 的 SyncPod 方法，去实现真正的容器创建逻辑<ul>
-<li>通过 docker 创建出来一个运行的 pause 容器。</li>
-<li>网络配置：如果 pod 是主机模式，容器也是；其他情况下，<strong>容器会使用 None 网络模式，让 kubelet 的网络插件自己进行网络配置</strong>。</li>
-<li>pod-infra-container</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p> 其他参考：<br> <a href="http://m.blog.csdn.net/zhonglinzhang/article/details/75005851" target="_blank" rel="noopener">kubelet源码分析－启动运行与信息处理</a></p>
-<p> <a href="http://dockone.io/article/2901" target="_blank" rel="noopener">Kubernetes的网络接口CNI及灵雀云的实践</a></p>
-<ul>
-<li>运维人员视角，在传统运维工作强调对IP要有很强的管控（银行等），POD需要固定IP:<ul>
-<li>于运维来说，网络方面是很重要的资源，要对IP进行强管控，服务来回飘，会让他的安全感下降很多。</li>
-<li>运维服务有很多基于IP的东西，有流量和突发的监控，如果你服务的IP一直变化，通过这个IP它很难用到这个服务，相当于IP的监控就没有意义，因为根本不知道IP流量上去了是哪个服务的，很难对应到这个事。</li>
-<li>还有是对于IP安全策略没有办法做。</li>
-<li>kubelet 与 CNI plugin调用逻辑图：<br><img src="/picture/CNI.png" alt="cni"></li>
-<li>K8S 不管你的IP,需要单独的管理.</li>
-<li>定制化网络管理，需要自己实现IPAM，plugin.</li>
-</ul>
-</li>
-</ul>
-<p><a href="http://cizixs.com/2017/05/23/container-network-cni" target="_blank" rel="noopener">CNI：容器网络接口</a> </p>
-<ul>
-<li>网络插件是独立的可执行文件，被上层的容器管理平台调用。网络插件只有两件事情要做：把容器加入到网络以及把容器从网络中删除。</li>
-<li><p>调用插件的数据通过两种方式传递：环境变量和标准输入。</p>
-</li>
-<li><p>kubernetes 使用了 CNI 网络插件之后 工作流程：</p>
-<ul>
-<li>kubernetes 先创建 pause 容器生成对应的 network namespace</li>
-<li>调用网络 driver（因为配置的是 CNI，所以会调用 CNI 相关代码）</li>
-<li>CNI driver 根据配置调用具体的 cni 插件<br>cni 插件给 pause 容器配置正确的网络</li>
-<li>pod 中其他的容器都是用 pause 的网络</li>
-</ul>
-</li>
-<li><p><a href="https://github.com/containernetworking/cni/blob/master/SPEC.md" target="_blank" rel="noopener">https://github.com/containernetworking/cni/blob/master/SPEC.md</a><br><a href="http://cizixs.com/" target="_blank" rel="noopener">http://cizixs.com/</a><br><a href="http://blog.csdn.net/WaltonWang/article/list/1" target="_blank" rel="noopener">http://blog.csdn.net/WaltonWang/article/list/1</a></p>
-</li>
-</ul>
-<p><a href="http://blog.csdn.net/waltonwang/article/details/72669826" target="_blank" rel="noopener">从源码看kubernetes与CNI Plugin的集成</a></p>
-<h1 id="网络基本常识"><a href="#网络基本常识" class="headerlink" title="网络基本常识"></a>网络基本常识</h1>
+<p><a href="https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong-" target="_blank" rel="noopener">https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong-</a></p>
+<p><a href="https://thenewstack.io/extend-kubernetes-1-7-custom-resources/" target="_blank" rel="noopener">https://thenewstack.io/extend-kubernetes-1-7-custom-resources/</a><br><a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/</a><br><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md" target="_blank" rel="noopener">https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md</a><br><a href="https://coreos.com/blog/introducing-operators.html" target="_blank" rel="noopener">https://coreos.com/blog/introducing-operators.html</a></p>
+<p><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/</a><br>最新1.8 重构过，代码差异比较大：<a href="http://dockone.io/article/2159" target="_blank" rel="noopener">Kubernetes1.5源码分析(一) apiServer启动分析</a></p>
+<p>#controller</p>
+<p>#schedule</p>
+<h1 id="网络基本常识"><a href="#网络基本常识" class="headerlink" title="网络基本常识"></a>网络基本常识</h1><p><a href="http://www.sdnlab.com/17141.html" target="_blank" rel="noopener">http://www.sdnlab.com/17141.html</a></p>
+<p><a href="http://blog.csdn.net/WaltonWang/article/list/1" target="_blank" rel="noopener">http://blog.csdn.net/WaltonWang/article/list/1</a></p>
+<p><a href="http://cizixs.com/" target="_blank" rel="noopener">http://cizixs.com/</a> </p>
+<p><a href="https://draveness.me/docker" target="_blank" rel="noopener">Docker 核心技术与实现原理</a>:</p>
+
     
   </div>
 
@@ -477,7 +398,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -488,7 +409,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -499,7 +420,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -561,7 +482,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubeadm安装实践"><span class="nav-number">1.</span> <span class="nav-text">kubeadm安装实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视屏教程"><span class="nav-number">2.</span> <span class="nav-text">视屏教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理架构"><span class="nav-number">3.</span> <span class="nav-text">原理架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件核心之etcd"><span class="nav-number">4.</span> <span class="nav-text">组件核心之etcd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写CNI"><span class="nav-number">5.</span> <span class="nav-text">编写CNI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubelet源码分析："><span class="nav-number">6.</span> <span class="nav-text">kubelet源码分析：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络基本常识"><span class="nav-number">7.</span> <span class="nav-text">网络基本常识</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubeadm安装实践"><span class="nav-number">1.</span> <span class="nav-text">kubeadm安装实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理架构"><span class="nav-number">2.</span> <span class="nav-text">原理架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件核心之etcd"><span class="nav-number">3.</span> <span class="nav-text">组件核心之etcd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubernetes-extend-API"><span class="nav-number">4.</span> <span class="nav-text">kubernetes extend API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络基本常识"><span class="nav-number">5.</span> <span class="nav-text">网络基本常识</span></a></li></ol></div>
             
 
           </div>
