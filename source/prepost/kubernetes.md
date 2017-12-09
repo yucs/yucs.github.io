@@ -10,7 +10,7 @@
 - [kubeadm工作机制分析](http://blog.csdn.net/waltonwang/article/details/70162993)
 - [源码分析之kubeadm](http://blog.csdn.net/u010278923/article/details/70225173)
 
-
+https://developer.ibm.com/cn/tv/2017/opentec-k8s/
  
 # 原理架构
   [Kubernetes指南](https://github.com/feiskyer/kubernetes-handbook)
@@ -39,7 +39,7 @@ https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/
 https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/
 最新1.8 重构过，代码差异比较大：[Kubernetes1.5源码分析(一) apiServer启动分析](http://dockone.io/article/2159)
 
-
+https://github.com/kubernetes/community
 
 #controller
 
@@ -57,4 +57,18 @@ http://blog.csdn.net/WaltonWang/article/list/1
 http://cizixs.com/ 
 
 [Docker 核心技术与实现原理](https://draveness.me/docker):
+
+
+https://github.com/grtl/mysql-operator
+
+
+
+
+# volume
  
+ 
+http://www.voidcn.com/article/p-dtoyjptm-bog.html 
+https://github.com/container-storage-interface/spec/blob/master/spec.md
+
+http://newto.me/k8s-storage-architecture/
+http://newto.me/k8s-csi-design/  下一步 代替flexvolume
