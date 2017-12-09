@@ -66,7 +66,6 @@ https://github.com/grtl/mysql-operator
 
 # volume
  
- 
 http://www.voidcn.com/article/p-dtoyjptm-bog.html 
 https://github.com/container-storage-interface/spec/blob/master/spec.md
 
