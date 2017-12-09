@@ -104,7 +104,7 @@
 <meta property="og:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/picture/CNI.png">
-<meta property="og:updated_time" content="2017-12-06T09:04:09.000Z">
+<meta property="og:updated_time" content="2017-12-08T09:02:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Kubernetes网络插件CNI学习整理">
 <meta name="twitter:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
@@ -416,7 +416,7 @@
         <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><ul>
 <li><p>项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-IOV网络插件。</p>
 </li>
-<li><p>问题： 目前kubernetes（1.8）（以后版本可能支持）中，POD并没有网络相关的配置，kubelete 调用 CNI plugin 默认只会以CNI_ARGS传入pod_name基本信息。如果要固定分配IP地址，以及配置QOS,vlan等网络特性，没法通过CNI_ARGS方式传入，不能像volume一样在pod SPEC中配置options可选的网络参数来传入cni plugin。 </p>
+<li><p>问题： 目前kubernetes（1.8）（以后版本可能支持大）中，POD并没有网络相关的配置，kubelete 调用 CNI plugin 默认只会以CNI_ARGS传入pod_name基本信息。如果要固定分配IP地址，以及配置QOS,vlan等网络特性，没法通过CNI_ARGS方式传入，不能像volume一样在pod SPEC中配置options可选的网络参数来传入cni plugin。 </p>
 </li>
 </ul>
 <ul>
@@ -459,6 +459,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">  //kubernetes/pkg/kubelet/network/cni/cni.go</span><br><span class="line">  func (plugin *cniNetworkPlugin) buildCNIRuntimeConf(podName string, podNs string, podSandboxID kubecontainer.ContainerID, podNetnsPath string) (*libcni.RuntimeConf, error) &#123;</span><br><span class="line">	rt := &amp;libcni.RuntimeConf&#123;</span><br><span class="line">		ContainerID: podSandboxID.ID,</span><br><span class="line">		NetNS:       podNetnsPath,</span><br><span class="line">		IfName:      network.DefaultInterfaceName,</span><br><span class="line">		Args: [][2]string&#123;</span><br><span class="line">			&#123;&quot;IgnoreUnknown&quot;, &quot;1&quot;&#125;,</span><br><span class="line">			&#123;&quot;K8S_POD_NAMESPACE&quot;, podNs&#125;,</span><br><span class="line">			&#123;&quot;K8S_POD_NAME&quot;, podName&#125;,</span><br><span class="line">			&#123;&quot;K8S_POD_INFRA_CONTAINER_ID&quot;, podSandboxID.ID&#125;,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"> //libcni </span><br><span class="line">func (c *CNIConfig) AddNetwork(net *NetworkConfig, rt *RuntimeConf)</span><br><span class="line">  invoke.ExecPluginWithResult(pluginPath, net.Bytes, c.args(&quot;ADD&quot;, rt))</span><br><span class="line">    //将RuntimeConf.Args以环境变量方式传入。</span><br><span class="line">    stdoutBytes, err := e.RawExec.ExecPlugin(pluginPath, netconf, args.AsEnv())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> type CNI interface &#123;</span><br><span class="line">	AddNetworkList(net *NetworkConfigList, rt *RuntimeConf) (types.Result, error)</span><br><span class="line">	DelNetworkList(net *NetworkConfigList, rt *RuntimeConf) error</span><br><span class="line"></span><br><span class="line">	AddNetwork(net *NetworkConfig, rt *RuntimeConf) (types.Result, error)</span><br><span class="line">	DelNetwork(net *NetworkConfig, rt *RuntimeConf) error</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type RuntimeConf struct &#123;</span><br><span class="line">	ContainerID string</span><br><span class="line">	NetNS       string</span><br><span class="line">	IfName      string</span><br><span class="line">	Args        [][2]string</span><br><span class="line">	// A dictionary of capability-specific data passed by the runtime</span><br><span class="line">	// to plugins as top-level keys in the &apos;runtimeConfig&apos; dictionary</span><br><span class="line">	// of the plugin&apos;s stdin data.  libcni will ensure that only keys</span><br><span class="line">	// in this map which match the capabilities of the plugin are passed</span><br><span class="line">	// to the plugin</span><br><span class="line">	CapabilityArgs map[string]interface&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="CNI开发参考资源"><a href="#CNI开发参考资源" class="headerlink" title="CNI开发参考资源"></a>CNI开发参考资源</h1><ul>
+<li><a href="https://github.com/keontang/k8s-notes/blob/master/kubernetes-network.md" target="_blank" rel="noopener">CNI源码分析</a>(比较系统)</li>
 <li><a href="http://www.cnblogs.com/YaoDD/p/7419383.html" target="_blank" rel="noopener">深入理解CNI</a></li>
 <li><a href="https://github.com/containernetworking/cni/blob/master/SPEC.md" target="_blank" rel="noopener">CNI spec 文档</a></li>
 <li>官方维护的plugin插件: <a href="https://github.com/containernetworking/plugins" target="_blank" rel="noopener">plugins</a></li>
@@ -592,6 +593,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/12/09/2017-12-9-分布式系统原理之基础介绍/" rel="prev" title=" 分布式系统之基础介绍">
+                 分布式系统之基础介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -699,7 +704,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -710,7 +715,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -721,7 +726,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

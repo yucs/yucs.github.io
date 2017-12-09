@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="分布式系统," />
 
 
 
@@ -95,17 +95,21 @@
 
 
 
-<meta name="description" content="hyperledger fabric 1.0 部署： 1. 注意点：#以太坊 部署">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yucs&#39;s Blog">
-<meta property="og:url" content="https://yucs.github.io/prepost/blockchain.html">
+<meta name="description" content="学习分布式系统要先了解该系统的整体架构，各个组件作用功能，运行时态的各个组件间互动的关系，核心主逻辑的在各个组件的调用逻辑。整体架构把握后，然后再看各个组件具体工作原理，再进一步看源码了解细节。 《分布式系统原理介绍》第一章 分布式系统模型：   异常是常态：分布式系统核心问题之一就是处理各种异常(failure)情况">
+<meta name="keywords" content="分布式系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" 分布式系统之基础介绍">
+<meta property="og:url" content="https://yucs.github.io/2017/12/09/2017-12-9-分布式系统原理之基础介绍/index.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="hyperledger fabric 1.0 部署： 1. 注意点：#以太坊 部署">
+<meta property="og:description" content="学习分布式系统要先了解该系统的整体架构，各个组件作用功能，运行时态的各个组件间互动的关系，核心主逻辑的在各个组件的调用逻辑。整体架构把握后，然后再看各个组件具体工作原理，再进一步看源码了解细节。 《分布式系统原理介绍》第一章 分布式系统模型：   异常是常态：分布式系统核心问题之一就是处理各种异常(failure)情况。  TCP 协议保证了 TCP 协议 栈之间的可靠的传输，但无法保证两个上层应">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T05:08:55.000Z">
+<meta property="og:image" content="https://yucs.github.io/picture/分布式系统模型.png">
+<meta property="og:image" content="https://yucs.github.io/picture/rpc_failure.png">
+<meta property="og:updated_time" content="2017-12-09T03:00:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yucs&#39;s Blog">
-<meta name="twitter:description" content="hyperledger fabric 1.0 部署： 1. 注意点：#以太坊 部署">
+<meta name="twitter:title" content=" 分布式系统之基础介绍">
+<meta name="twitter:description" content="学习分布式系统要先了解该系统的整体架构，各个组件作用功能，运行时态的各个组件间互动的关系，核心主逻辑的在各个组件的调用逻辑。整体架构把握后，然后再看各个组件具体工作原理，再进一步看源码了解细节。 《分布式系统原理介绍》第一章 分布式系统模型：   异常是常态：分布式系统核心问题之一就是处理各种异常(failure)情况。  TCP 协议保证了 TCP 协议 栈之间的可靠的传输，但无法保证两个上层应">
+<meta name="twitter:image" content="https://yucs.github.io/picture/分布式系统模型.png">
 
 
 
@@ -133,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="https://yucs.github.io/prepost/blockchain.html"/>
+  <link rel="canonical" href="https://yucs.github.io/2017/12/09/2017-12-9-分布式系统原理之基础介绍/"/>
 
 
 
 
 
-  <title> | yucs's Blog</title>
+  <title> 分布式系统之基础介绍 | yucs's Blog</title>
   
 
 
@@ -293,20 +297,293 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline"></h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yucs.github.io/2017/12/09/2017-12-9-分布式系统原理之基础介绍/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yucs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yucs's Blog">
+    </span>
 
     
-    
-      <h2 id="hyperledger-fabric-1-0-部署"><a href="#hyperledger-fabric-1-0-部署" class="headerlink" title="hyperledger fabric 1.0 部署"></a>hyperledger fabric 1.0 部署</h2><p><a href=""></a>：<br> 1.</p>
-<h4 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h4><p>#以太坊 部署</p>
+      <header class="post-header">
 
+        
+        
+          <h1 class="post-title" itemprop="name headline"> 分布式系统之基础介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-09T00:00:00+08:00">
+                2017-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/分布式系统/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/09/2017-12-9-分布式系统原理之基础介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/09/2017-12-9-分布式系统原理之基础介绍/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/09/2017-12-9-分布式系统原理之基础介绍/" class="leancloud_visitors" data-flag-title=" 分布式系统之基础介绍">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习分布式系统要先了解该系统的整体架构，各个组件作用功能，运行时态的各个组件间互动的关系，核心主逻辑的在各个组件的调用逻辑。整体架构把握后，然后再看各个组件具体工作原理，再进一步看源码了解细节。</p>
+<h1 id="《分布式系统原理介绍》第一章"><a href="#《分布式系统原理介绍》第一章" class="headerlink" title="《分布式系统原理介绍》第一章"></a>《分布式系统原理介绍》第一章</h1><ul>
+<li><p>分布式系统模型：<br><img src="/picture/分布式系统模型.png" alt="分布式系统模型"> </p>
+</li>
+<li><p>异常是常态：分布式系统核心问题之一就是处理各种异常(failure)情况。</p>
+</li>
+<li><p>TCP 协议保证了 TCP 协议 栈之间的可靠的传输，但无法保证两个上层应用之间的可靠通信，往往应用间需要确认消息。（使用RPC就可以在应用层确认消息，某种程度算是应用层的可靠通信）</p>
+<ul>
+<li>题外话：应用程序调用接口保存数据，返回成功也不一定意味着真实落盘，因为通常为了性能，不使用直写模式，数据只会写入操作系统内核缓存区就返回成功了，尤其使用分布式文件系统，IO路径更长。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>由于网络异常的存在，分布式系统中请求结果存在“三态”的概念：成功、 失败、 超时(未 知)。对于超时的请求，我们无法获知该 请求是否被节点 B 成功执行了，因此要特殊处理，一种简单处理方式，就是调用接口要幂等性（分布式系统设计中，幂等性很重要，可以保证系统状态的正确性）。<br><img src="/picture/rpc_failure.png" alt="rpc_failure"></p>
+</li>
+<li><p>在工程实践中，大量异常情况是无法预先可知的：例如，磁盘故障会导致 IO 操作缓慢，从而有可能使得进程运行速度非常慢，进而对整个系统会造成影响。又例如网络不稳定时也会引起“半死不活”异常，例如网络发生严重 拥塞时约等于网络不通，过一会儿又恢复，恢复后又拥塞，如此交替。</p>
+</li>
+<li><p>被大量工程实践所检验过的异常处理黄金原则是:任何在设计阶段考虑到的异常情况一定会在 系统实际运行中发生，但在系统实际运行遇到的异常却很有可能在设计时未能考虑，所以，除非需 求指标允许，在系统设计时不能放过任何异常情况。</p>
+</li>
+<li><p>工程中常常容易出问题的一种思路是认为某种异常出现的概率非常小以至于可以忽略不计。（墨菲定律：一、任何事都没有表面看起来那么简单；二、所有的事都会比你预计的时间长；三、会出错的事总会出错；<br>四、如果你担心某种情况发生，那么它就更有可能发生。）</p>
+</li>
+</ul>
+<ul>
+<li>衡量分布式系统的指标<ul>
+<li>可扩展性(scalability) : 指分布式系统通过扩展集群机器规模 高系统性能(吞吐、延迟、 并发)、存储容量、计算能力的特性。可扩展性是分布式系统的特有性质。分布式系统的设计初衷就 是利用集群多机的能力处理单机无法解决的问题. </li>
+<li>可用性：可用性是分布式的重要指标，衡量了系统的鲁棒性，是系统容错能力的体现。</li>
+<li>性能指标：系统的吞吐能力，QPS(query per second)，系统的响应延迟。追求高吞吐的系统，往往很难做到低延迟;系统平均响应时间较长时，也很难提高QPS。(参考：<a href="http://www.cnblogs.com/data2value/p/6220859.html" target="_blank" rel="noopener">吞吐量（TPS）、QPS、并发数、响应时间（RT）概念</a>和<a href="http://www.ha97.com/5095.html" target="_blank" rel="noopener">系统吞吐量（TPS）、用户并发量、性能测试概念和公式</a>)</li>
+<li>一致性: 分布式系统为了高可用性，总是不可避免的使用副本的冗余机制，从而引发副本一致性的问题。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Introduction-to-Distributed-System-Design"><a href="#Introduction-to-Distributed-System-Design" class="headerlink" title="Introduction to Distributed System Design"></a>Introduction to Distributed System Design</h1><p><a href="http://www.hpcs.cs.tsukuba.ac.jp/~tatebe/lecture/h23/dsys/dsd-tutorial.html" target="_blank" rel="noopener">Introduction to Distributed System Design</a></p>
+<p><a href="http://dockone.io/article/967?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">彻底厘清真实世界中的分布式系统</a></p>
+<p><a href="http://dockone.io/article/898" target="_blank" rel="noopener">当讨论分布式系统时，我们都会讨论些什么？</a></p>
+<ul>
+<li><p>有关分布式计算的几个谬论: 网络是可靠的。延迟为零。带宽是无限的。网络是安全的。拓扑不会改变。肯定有一个管理员。传输的代价为零。网络是同质的。</p>
+</li>
+<li><p>常见异常：</p>
+<ul>
+<li>Halting failures: A component simply stops. There is no way to detect the failure except by timeout: it either stops sending “I’m alive” (heartbeat) messages or fails to respond to requests. Your computer freezing is a halting failure.</li>
+<li>Fail-stop: A halting failure with some kind of notification to other components. A network file server telling its clients it is about to go down is a fail-stop.<br>Omission failures: Failure to send/receive messages primarily due to lack of buffering space, which causes a message to be discarded with no notification to either the sender or receiver. This can happen when routers become overloaded.</li>
+<li>Network failures: A network link breaks.<br>Network partition failure: A network fragments into two or more disjoint sub-networks within which messages can be sent, but between which messages are lost. This can occur due to a network failure.</li>
+<li>Timing failures: A temporal property of the system is violated. For example, clocks on different computers which are used to coordinate processes are not synchronized; when a message is delayed longer than a threshold period, etc.</li>
+<li>Byzantine failures: This captures several types of faulty behaviors including data corruption or loss, failures caused by malicious programs, etc.</li>
+</ul>
+</li>
+<li><p>分布式系统特性：</p>
+<ul>
+<li>Fault-Tolerant: It can recover from component failures without performing incorrect actions.</li>
+<li>Highly Available: It can restore operations, permitting it to resume providing services even when some components have failed.</li>
+<li>Recoverable: Failed components can restart themselves and rejoin the system, after the cause of failure has been repaired.</li>
+<li>Consistent: The system can coordinate actions by multiple components often in the presence of concurrency and failure. This underlies the ability of a distributed system to act like a non-distributed system.</li>
+<li>Scalable: It can operate correctly even as some aspect of the system is scaled to a larger size. For example, we might increase the size of the network on which the system is running. This increases the frequency of network outages and could degrade a “non-scalable” system. Similarly, we might increase the number of users or servers, or overall load on the system. In a scalable system, this should not have a significant effect.</li>
+<li>Predictable Performance: The ability to provide desired responsiveness in a timely manner.</li>
+<li>Secure: The system authenticates access to data and services</li>
+</ul>
+</li>
+</ul>
+<p>很难设计出包含全部特性的分布式系统，因此在设计系统要根据具体需求做权衡了。尤其在数据类分布式系统，经典就是CAP，BASE,ACID理论了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div><strong><div style="color:#00F">如果觉得我写的帮助到您，请随意打赏，是我最大的肯定和动力</div> </strong></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/picture/WechatIMG2.jpeg" alt="yucs WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/分布式系统/" rel="tag"># 分布式系统</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/06/ 2017-12-6-CNI/" rel="next" title=" Kubernetes网络插件CNI学习整理">
+                <i class="fa fa-chevron-left"></i>  Kubernetes网络插件CNI学习整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!--MOB SHARE BEGIN-->
+ <div class="-mob-share-ui-button -mob-share-open">分享</div>
+ <div class="-mob-share-ui" style="display: none">
+     <ul class="-mob-share-list">
+         <li class="-mob-share-weibo"><p>新浪微博</p></li>
+         <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+         <li class="-mob-share-qzone"><p>QQ空间</p></li>
+         <li class="-mob-share-qq"><p>QQ好友</p></li>
+         <li class="-mob-share-weixin"><p>微信</p></li>
+         <li class="-mob-share-douban"><p>豆瓣</p></li>
+         <li class="-mob-share-renren"><p>人人网</p></li>
+         <li class="-mob-share-kaixin"><p>开心网</p></li>
+         <li class="-mob-share-facebook"><p>Facebook</p></li>
+         <li class="-mob-share-twitter"><p>Twitter</p></li>
+         <li class="-mob-share-pocket"><p>Pocket</p></li>
+         <li class="-mob-share-google"><p>Google+</p></li>
+         <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+         <li class="-mob-share-mingdao"><p>明道</p></li>
+         <li class="-mob-share-pengyou"><p>朋友网</p></li>
+         <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+         <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+         <li class="-mob-share-linkedin"><p>LinkedIn</p></li>
+     </ul>
+    <div class="-mob-share-close">取消</div>
+ </div>
+ <div class="-mob-share-ui-bg"></div>
+ <script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=1f85dd74c1b48"></script>
+ <!--MOB SHARE END-->
+      
+    </div>
   </div>
 
 
@@ -455,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hyperledger-fabric-1-0-部署"><span class="nav-number">1.</span> <span class="nav-text">hyperledger fabric 1.0 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意点："><span class="nav-number">1.0.1.</span> <span class="nav-text">注意点：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《分布式系统原理介绍》第一章"><span class="nav-number">1.</span> <span class="nav-text">《分布式系统原理介绍》第一章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-Distributed-System-Design"><span class="nav-number">2.</span> <span class="nav-text">Introduction to Distributed System Design</span></a></li></ol></div>
             
 
           </div>
@@ -585,10 +862,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -609,9 +886,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://yucs.github.io/prepost/blockchain.html';
-          this.page.identifier = 'prepost/blockchain.html';
-          this.page.title = '';
+          this.page.url = 'https://yucs.github.io/2017/12/09/2017-12-9-分布式系统原理之基础介绍/';
+          this.page.identifier = '2017/12/09/2017-12-9-分布式系统原理之基础介绍/';
+          this.page.title = ' 分布式系统之基础介绍';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://http-yucs-github-io.disqus.com/embed.js';
