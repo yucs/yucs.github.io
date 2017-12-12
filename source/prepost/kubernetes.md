@@ -39,6 +39,9 @@ https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/
 https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/
 最新1.8 重构过，代码差异比较大：[Kubernetes1.5源码分析(一) apiServer启动分析](http://dockone.io/article/2159)
 
+[apiserver的list-watch代码解读](https://www.kubernetes.org.cn/174.html)
+
+
 https://github.com/kubernetes/community
 
 #controller
@@ -50,6 +53,7 @@ https://github.com/kubernetes/community
 http://www.sdnlab.com/17141.html
 
 
+ [探索Kubernetes的网络原理及方案](http://www.dockone.io/article/2392)
 
 
 http://blog.csdn.net/WaltonWang/article/list/1
@@ -61,13 +65,8 @@ http://cizixs.com/
 
 https://github.com/grtl/mysql-operator
 
+https://github.com/kubernetes/client-go
 
 
 
-# volume
- 
-http://www.voidcn.com/article/p-dtoyjptm-bog.html 
-https://github.com/container-storage-interface/spec/blob/master/spec.md
-
-http://newto.me/k8s-storage-architecture/
-http://newto.me/k8s-csi-design/  下一步 代替flexvolume
+e
