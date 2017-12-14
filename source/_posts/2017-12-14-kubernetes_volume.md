@@ -30,7 +30,8 @@ tags:
       - 基于[FlexVolume](https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md):  [lvm](https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/flexvolume) 根据需求二次定制就好了。
       - （可选）参考[external-storage](https://github.com/kubernetes-incubator/external-storage):[hostPath demo](https://github.com/kubernetes-incubator/external-storage/tree/master/docs/demo/hostpath-provisioner)
 
- 
+
+  - 参考TiDB关于本地存储的解决方案部分：[黄东旭DTCC2017演讲实录：When TiDB Meets Kubernetes](https://zhuanlan.zhihu.com/p/27229692?utm_source=wechat_session&utm_medium=social)
 
 # 概念
 [kubernetes指南：存储](https://feisky.gitbooks.io/kubernetes/concepts/volume.html)
@@ -72,8 +73,8 @@ tags:
 
 [Kubernetes 存储功能和源码深度解析（二）](http://dockone.io/article/2087)
 
-![K8S_volume_arch](/picture/K8S_volume_arch.png) 
-![k8s_volume_arch2](/picture/k8s_volume_arch2.png)
+![K8S_volume_arch](https://yucs.github.io/picture/K8S_volume_arch.png) 
+![k8s_volume_arch2](https://yucs.github.io/picture/k8s_volume_arch2.png)
 
 - Volume Plugins 
  - 存储提供的扩展接口, 包含了各类存储提供者的plugin实现。
@@ -97,9 +98,9 @@ tags:
 
 - PV & PVC状态图
   PV的状态图：
-    ![pv](/picture/PV_status.png)
+    ![pv](https://yucs.github.io/picture/PV_status.png)
    PVC的状态图:
-    ![pvc](/picture/pvc_status.png)
+    ![pvc](https://yucs.github.io/picture/pvc_status.png)
 
 
 # 源码分析
