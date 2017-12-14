@@ -104,7 +104,7 @@
 <meta property="og:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/picture/CNI.png">
-<meta property="og:updated_time" content="2017-12-14T02:31:17.000Z">
+<meta property="og:updated_time" content="2017-12-14T02:46:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Kubernetes网络插件CNI学习整理">
 <meta name="twitter:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
@@ -441,7 +441,7 @@
 <li>于运维来说，网络方面是很重要的资源，要对IP进行强管控，服务来回飘，会让他的安全感下降很多。</li>
 <li>运维服务有很多基于IP的东西，有流量和突发的监控，如果你服务的IP一直变化，通过这个IP它很难用到这个服务，相当于IP的监控就没有意义，因为根本不知道IP流量上去了是哪个服务的，很难对应到这个事。</li>
 <li>还有是对于IP安全策略没有办法做。</li>
-<li>kubelet 与 CNI plugin调用逻辑图：<br><img src="/picture/CNI.png" alt="cni"></li>
+<li>kubelet 与 CNI plugin调用逻辑图：<br><img src="https://yucs.github.io/picture/CNI.png" alt="cni"></li>
 </ul>
 </li>
 </ul>

@@ -103,7 +103,7 @@
 <meta property="og:description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  https://developer.ibm.com/cn/tv/2017/opentec-k8s/ 原理架构  Kubernetes指南  kubernetes-handbook">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/prepost/picture/k8s-arch.png">
-<meta property="og:updated_time" content="2017-12-13T08:47:42.000Z">
+<meta property="og:updated_time" content="2017-12-14T06:34:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yucs&#39;s Blog">
 <meta name="twitter:description" content="kubeadm安装实践 kubernetes架构图： Kubernetes指南 之 kubeadm部署  原理 Kubernetes指南 之 kubeadm工作原理 kubeadm工作机制分析 源码分析之kubeadm  https://developer.ibm.com/cn/tv/2017/opentec-k8s/ 原理架构  Kubernetes指南  kubernetes-handbook">
@@ -319,20 +319,8 @@
 <h1 id="组件核心之etcd"><a href="#组件核心之etcd" class="headerlink" title="组件核心之etcd"></a>组件核心之etcd</h1><ul>
 <li><a href="http://dockone.io/article/2885" target="_blank" rel="noopener">Kubernetes调度详解</a></li>
 </ul>
-<h1 id="kubernetes-extend-API"><a href="#kubernetes-extend-API" class="headerlink" title="kubernetes extend API"></a>kubernetes extend API</h1><p>两种方式：<br> api接口</p>
-<ul>
-<li><a href="https://www.kubernetes.org.cn/3119.html" target="_blank" rel="noopener">Kubernetes API 分析 ( Kube-apiserver )</a></li>
-</ul>
-<p><a href="https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong-" target="_blank" rel="noopener">https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong-</a></p>
-<p><a href="https://thenewstack.io/extend-kubernetes-1-7-custom-resources/" target="_blank" rel="noopener">Extend Kubernetes 1.7 with Custom Resources</a><br><a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/</a><br><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md" target="_blank" rel="noopener">https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md</a><br><a href="https://coreos.com/blog/introducing-operators.html" target="_blank" rel="noopener">https://coreos.com/blog/introducing-operators.html</a></p>
-<p><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/</a><br>最新1.8 重构过，代码差异比较大：<a href="http://dockone.io/article/2159" target="_blank" rel="noopener">Kubernetes1.5源码分析(一) apiServer启动分析</a></p>
-<p><a href="https://www.kubernetes.org.cn/174.html" target="_blank" rel="noopener">apiserver的list-watch代码解读</a></p>
-<p>调度</p>
 <p><a href="https://github.com/kubernetes/community" target="_blank" rel="noopener">https://github.com/kubernetes/community</a></p>
-<p>#controller<br><a href="https://github.com/kubernetes/community/blob/8decfe4/contributors/devel/controllers.md" target="_blank" rel="noopener">https://github.com/kubernetes/community/blob/8decfe4/contributors/devel/controllers.md</a></p>
 <p><a href="https://blog.openshift.com/kubernetes-deep-dive-code-generation-customresources/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-code-generation-customresources/</a></p>
-<p>#schedule</p>
-<p><a href="http://dockone.io/article/2625" target="_blank" rel="noopener">http://dockone.io/article/2625</a></p>
 <h1 id="网络基本常识"><a href="#网络基本常识" class="headerlink" title="网络基本常识"></a>网络基本常识</h1><p><a href="http://www.sdnlab.com/17141.html" target="_blank" rel="noopener">http://www.sdnlab.com/17141.html</a></p>
 <p> <a href="http://www.dockone.io/article/2392" target="_blank" rel="noopener">探索Kubernetes的网络原理及方案</a></p>
 <p><a href="http://blog.csdn.net/WaltonWang/article/list/1" target="_blank" rel="noopener">http://blog.csdn.net/WaltonWang/article/list/1</a></p>
@@ -341,6 +329,7 @@
 <p><a href="https://github.com/grtl/mysql-operator" target="_blank" rel="noopener">https://github.com/grtl/mysql-operator</a></p>
 <p><a href="https://github.com/kubernetes/client-go" target="_blank" rel="noopener">https://github.com/kubernetes/client-go</a></p>
 <p><a href="http://blog.csdn.net/huwh_/article/details/71308301" target="_blank" rel="noopener"> kubernetes集群问题排查</a></p>
+<p><a href="http://cizixs.com/" target="_blank" rel="noopener">http://cizixs.com/</a></p>
 
     
   </div>
@@ -491,7 +480,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubeadm安装实践"><span class="nav-number">1.</span> <span class="nav-text">kubeadm安装实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理架构"><span class="nav-number">2.</span> <span class="nav-text">原理架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件核心之etcd"><span class="nav-number">3.</span> <span class="nav-text">组件核心之etcd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubernetes-extend-API"><span class="nav-number">4.</span> <span class="nav-text">kubernetes extend API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络基本常识"><span class="nav-number">5.</span> <span class="nav-text">网络基本常识</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubeadm安装实践"><span class="nav-number">1.</span> <span class="nav-text">kubeadm安装实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理架构"><span class="nav-number">2.</span> <span class="nav-text">原理架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件核心之etcd"><span class="nav-number">3.</span> <span class="nav-text">组件核心之etcd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络基本常识"><span class="nav-number">4.</span> <span class="nav-text">网络基本常识</span></a></li></ol></div>
             
 
           </div>

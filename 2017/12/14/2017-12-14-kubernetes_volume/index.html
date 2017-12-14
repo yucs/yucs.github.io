@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://yucs.github.io/picture/k8s_volume_arch2.png">
 <meta property="og:image" content="https://yucs.github.io/picture/PV_status.png">
 <meta property="og:image" content="https://yucs.github.io/picture/pvc_status.png">
-<meta property="og:updated_time" content="2017-12-14T02:31:27.000Z">
+<meta property="og:updated_time" content="2017-12-14T07:30:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Kubernetes之存储学习整理">
 <meta name="twitter:description" content="概要 存储选型思考  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化） 数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求 简单方案可以采用如hostpath等本地存储方案，妥协点是数据无法迁移（当然，一般数据类系统">
@@ -437,6 +437,9 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li>参考TiDB关于本地存储的解决方案部分：<a href="https://zhuanlan.zhihu.com/p/27229692?utm_source=wechat_session&amp;utm_medium=social" target="_blank" rel="noopener">黄东旭DTCC2017演讲实录：When TiDB Meets Kubernetes</a></li>
+</ul>
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><a href="https://feisky.gitbooks.io/kubernetes/concepts/volume.html" target="_blank" rel="noopener">kubernetes指南：存储</a></p>
 <p><a href="https://kubernetes.io/docs/concepts/storage/volumes/" target="_blank" rel="noopener">官方文档</a></p>
 <p><a href="http://ibm.biz/opentech-ma" target="_blank" rel="noopener">IBM开源技术微讲堂:Kubernetes的存储管理</a>（好）</p>
@@ -472,7 +475,7 @@
 <p><a href="http://newto.me/k8s-adcontroller-caches/" target="_blank" rel="noopener">Kubernetes存储介绍系列 —— AttachDetachController1</a></p>
 <p><a href="http://dockone.io/article/2082" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（一）</a></p>
 <p><a href="http://dockone.io/article/2087" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（二）</a></p>
-<p><img src="/picture/K8S_volume_arch.png" alt="K8S_volume_arch"><br><img src="/picture/k8s_volume_arch2.png" alt="k8s_volume_arch2"></p>
+<p><img src="https://yucs.github.io/picture/K8S_volume_arch.png" alt="K8S_volume_arch"><br><img src="https://yucs.github.io/picture/k8s_volume_arch2.png" alt="k8s_volume_arch2"></p>
 <ul>
 <li>Volume Plugins <ul>
 <li>存储提供的扩展接口, 包含了各类存储提供者的plugin实现。</li>
@@ -518,7 +521,7 @@
 </li>
 </ul>
 </li>
-<li><p>PV &amp; PVC状态图<br>PV的状态图：<br>  <img src="/picture/PV_status.png" alt="pv"><br> PVC的状态图:<br>  <img src="/picture/pvc_status.png" alt="pvc"></p>
+<li><p>PV &amp; PVC状态图<br>PV的状态图：<br>  <img src="https://yucs.github.io/picture/PV_status.png" alt="pv"><br> PVC的状态图:<br>  <img src="https://yucs.github.io/picture/pvc_status.png" alt="pvc"></p>
 </li>
 </ul>
 <h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>Volume Manager : <a href="http://www.voidcn.com/article/p-dtoyjptm-bog.html" target="_blank" rel="noopener">kubernetes数据卷管理源码分析</a></p>
