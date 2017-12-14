@@ -27,6 +27,12 @@ https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/
 
 
 [Kubernetes Informer 详解](https://www.kubernetes.org.cn/2693.html)
+
+[如何用 client-go 拓展 Kubernetes 的 API](http://www.k8smeetup.com/article/VJsZn@nT7)
+
+ [使用 client-go 控制原生及拓展的 Kubernetes API](https://my.oschina.net/caicloud/blog/829365)
+ 
+ 
 [Kubernetes Scheduler是如何工作的](http://dockone.io/article/2625)
 重构比较大:
 从Kubernetes 1.7开始，所有需要监控资源变化情况的调用均推荐使用Informer。Informer提供了基于事件通知的只读缓存机制，可以注册资源变化的回调函数，并可以极大减少API的调用。
@@ -40,6 +46,7 @@ http://blog.csdn.net/WaltonWang/article/list/1
 http://cizixs.com/ 
  
  
+我们发现为什么部署这些有状态的应用和部署管理它们会比无状态的复杂呢？是因为它们有这些复杂的运维和逻辑在里面 
 #controller
 https://github.com/kubernetes/community/blob/8decfe4/contributors/devel/controllers.md
 
@@ -51,4 +58,8 @@ for {
 }
 ```
 
+
+
 [](https://zhuanlan.zhihu.com/p/27229692?utm_source=wechat_session&utm_medium=social)
+
+[使用 Operator 来扩展 Kubernetes(视频)](https://k8smeetup.maodou.io/course/hFRDJyzkdWXPFanyY)
