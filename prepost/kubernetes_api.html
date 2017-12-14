@@ -103,7 +103,7 @@
 <meta property="og:description" content="kubernetes extend API两种方式： api接口  Kubernetes API 分析 ( Kube-apiserver )  https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong- https://thenewstack.io/extend-kubernetes-1-7-custom-">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/picture/pod_create.png">
-<meta property="og:updated_time" content="2017-12-14T06:34:30.000Z">
+<meta property="og:updated_time" content="2017-12-14T10:17:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yucs&#39;s Blog">
 <meta name="twitter:description" content="kubernetes extend API两种方式： api接口  Kubernetes API 分析 ( Kube-apiserver )  https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong- https://thenewstack.io/extend-kubernetes-1-7-custom-">
@@ -316,13 +316,18 @@
 <p><a href="https://coreos.com/blog/introducing-operators.html" target="_blank" rel="noopener">https://coreos.com/blog/introducing-operators.html</a></p>
 <p><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/</a></p>
 <p>最新1.8 重构过，代码差异比较大：<a href="http://dockone.io/article/2159" target="_blank" rel="noopener">Kubernetes1.5源码分析(一) apiServer启动分析</a><br><a href="https://www.kubernetes.org.cn/174.html" target="_blank" rel="noopener">apiserver的list-watch代码解读</a></p>
-<p><a href="https://www.kubernetes.org.cn/2693.html" target="_blank" rel="noopener">Kubernetes Informer 详解</a><br><a href="http://dockone.io/article/2625" target="_blank" rel="noopener">Kubernetes Scheduler是如何工作的</a><br>重构比较大:<br>从Kubernetes 1.7开始，所有需要监控资源变化情况的调用均推荐使用Informer。Informer提供了基于事件通知的只读缓存机制，可以注册资源变化的回调函数，并可以极大减少API的调用。</p>
+<p><a href="https://www.kubernetes.org.cn/2693.html" target="_blank" rel="noopener">Kubernetes Informer 详解</a></p>
+<p><a href="http://www.k8smeetup.com/article/VJsZn@nT7" target="_blank" rel="noopener">如何用 client-go 拓展 Kubernetes 的 API</a></p>
+<p> <a href="https://my.oschina.net/caicloud/blog/829365" target="_blank" rel="noopener">使用 client-go 控制原生及拓展的 Kubernetes API</a></p>
+<p><a href="http://dockone.io/article/2625" target="_blank" rel="noopener">Kubernetes Scheduler是如何工作的</a><br>重构比较大:<br>从Kubernetes 1.7开始，所有需要监控资源变化情况的调用均推荐使用Informer。Informer提供了基于事件通知的只读缓存机制，可以注册资源变化的回调函数，并可以极大减少API的调用。</p>
 <p><img src="/picture/pod_create.png" alt="pod_create"></p>
 <p><a href="http://blog.csdn.net/WaltonWang/article/list/1" target="_blank" rel="noopener">http://blog.csdn.net/WaltonWang/article/list/1</a></p>
 <p><a href="http://cizixs.com/" target="_blank" rel="noopener">http://cizixs.com/</a> </p>
+<p>我们发现为什么部署这些有状态的应用和部署管理它们会比无状态的复杂呢？是因为它们有这些复杂的运维和逻辑在里面 </p>
 <p>#controller<br><a href="https://github.com/kubernetes/community/blob/8decfe4/contributors/devel/controllers.md" target="_blank" rel="noopener">https://github.com/kubernetes/community/blob/8decfe4/contributors/devel/controllers.md</a></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">  desired := getDesiredState()</span><br><span class="line">  current := getCurrentState()</span><br><span class="line">  makeChanges(desired, current)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://zhuanlan.zhihu.com/p/27229692?utm_source=wechat_session&amp;utm_medium=social" target="_blank" rel="noopener"></a></p>
+<p><a href="https://k8smeetup.maodou.io/course/hFRDJyzkdWXPFanyY" target="_blank" rel="noopener">使用 Operator 来扩展 Kubernetes(视频)</a></p>
 
     
   </div>

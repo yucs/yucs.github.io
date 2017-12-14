@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://yucs.github.io/picture/线性同余法.png">
 <meta property="og:image" content="https://yucs.github.io/picture/密码实现伪随机生成器.png">
 <meta property="og:image" content="https://yucs.github.io/picture/密码工具箱小结.png">
-<meta property="og:updated_time" content="2017-12-03T02:49:15.000Z">
+<meta property="og:updated_time" content="2017-12-14T12:22:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解密码技术》笔记（二）">
 <meta name="twitter:description" content="单向散列函数 可以保证消息的完整性，但不能对消息进行认证 （可以辨别出篡改，无法辨别出伪装） 散列值得长度是固定的，和消息长度无关。 性质： 根据任意长度的消息计算出固定长度的散列值。 能够快速计算出散列值。   如果两个消息体产生同个散列值称为碰撞,密码技术中所使用的单向散列函数必须具备抗碰撞性。 哪怕只有1比特的改变，也必须有很高的概率产生不同的散列值  具备单向性：   实际应用： MD5来">
@@ -433,14 +433,14 @@
       
         <h1 id="单向散列函数"><a href="#单向散列函数" class="headerlink" title="单向散列函数"></a>单向散列函数</h1><ul>
 <li>可以保证消息的完整性，但不能对消息进行认证 （可以辨别出篡改，无法辨别出伪装）</li>
-<li>散列值得长度是固定的，和消息长度无关。<br><img src="/picture/单向散列函数.png" alt="单向散列函数"></li>
+<li>散列值得长度是固定的，和消息长度无关。<br><img src="https://yucs.github.io/picture/单向散列函数.png" alt="单向散列函数"></li>
 <li>性质：<ul>
 <li>根据任意长度的消息计算出固定长度的散列值。</li>
 <li>能够快速计算出散列值。  </li>
 <li>如果两个消息体产生同个散列值称为碰撞,密码技术中所使用的单向散列函数必须具备抗碰撞性。</li>
 <li><strong>哪怕只有1比特的改变，也必须有很高的概率产生不同的散列值</strong></li>
-<li><img src="/picture/散列值碰撞.png" alt="散列值碰撞"></li>
-<li>具备单向性：<br><img src="/picture/散列值单向性.png" alt="散列值单向性"></li>
+<li><img src="https://yucs.github.io/picture/散列值碰撞.png" alt="散列值碰撞"></li>
+<li>具备单向性：<br><img src="https://yucs.github.io/picture/散列值单向性.png" alt="散列值单向性"></li>
 </ul>
 </li>
 <li>实际应用：<ul>
@@ -453,20 +453,20 @@
 </li>
 </ul>
 <h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><ul>
-<li><p>公钥密码和数字签名：<br><img src="/picture/密钥使用方式.png" alt="密钥使用方式"><br><img src="/picture/密钥加密.png" alt="密钥加密"><br><img src="/picture/数字签名.png" alt="数字签名"></p>
+<li><p>公钥密码和数字签名：<br><img src="https://yucs.github.io/picture/密钥使用方式.png" alt="密钥使用方式"><br><img src="https://yucs.github.io/picture/密钥加密.png" alt="密钥加密"><br><img src="https://yucs.github.io/picture/数字签名.png" alt="数字签名"></p>
 </li>
-<li><p>数字签名是对消息的散列值签名：<br><img src="/picture/数字签名流程.png" alt="数字签名流程"><br><img src="/picture/数字签名流程2.png" alt="数字签名流程2"> </p>
+<li><p>数字签名是对消息的散列值签名：<br><img src="https://yucs.github.io/picture/数字签名流程.png" alt="数字签名流程"><br><img src="https://yucs.github.io/picture/数字签名流程2.png" alt="数字签名流程2"> </p>
 </li>
-<li>RAS的数字签名和验证：<br><img src="/picture/RAS数字签名.png" alt="RAS数字签名"></li>
+<li>RAS的数字签名和验证：<br><img src="https://yucs.github.io/picture/RAS数字签名.png" alt="RAS数字签名"></li>
 <li>数字签名不能保证机密性，在数字签名中，只有发送者才持有生成签名的私钥，防止否认。</li>
 <li>对称密码的密钥是机密性的精华，单向散列函数的散列值是完整性的精华。</li>
 <li>数字签名是非常重要的认证技术，但前提是用于验证签名的发送者的公钥没有被伪造，即要确认公钥是否合法，可以对公钥施加数字签名，之就是证书。</li>
 </ul>
 <h1 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h1><p>公钥证书（public-Key Certificate PKC）由可信的认证机构（certification Authority ,CA）施加数字签名。公钥证书也简称证书。</p>
 <ul>
-<li><p>认证例子：<br><img src="/picture/证书认证.png" alt="证书认证"></p>
+<li><p>认证例子：<br><img src="https://yucs.github.io/picture/证书认证.png" alt="证书认证"></p>
 </li>
-<li><p>证书标准规范X.509:<br><img src="/picture/X.509.png" alt="X.509"></p>
+<li><p>证书标准规范X.509:<br><img src="https://yucs.github.io/picture/X.509.png" alt="X.509"></p>
 </li>
 </ul>
 <p>简单例子：</p>
@@ -474,15 +474,15 @@
 <ul>
 <li><p>公钥基础设施（PKI）<br>PKI(public-key infrastructure)是为了能够有效地运用公钥而制定的一系列规范和规格的总称。</p>
 <ul>
-<li><p>组成要素： 用户：使用PKI的人，认证机构（CA）：颁发证书的人 ， 仓库：保存证书的数据库：<br><img src="/picture/PKI.png" alt="pki">   </p>
+<li><p>组成要素： 用户：使用PKI的人，认证机构（CA）：颁发证书的人 ， 仓库：保存证书的数据库：<br><img src="https://yucs.github.io/picture/PKI.png" alt="pki">   </p>
 </li>
-<li><p>CA的工作：<br><img src="/picture/PKI2.png" alt="pki2"></p>
+<li><p>CA的工作：<br><img src="https://yucs.github.io/picture/PKI2.png" alt="pki2"></p>
 </li>
 <li><p>CRL(Certificate Revocation list): 证书作废清单，当用户的私钥丢失，被盗是，认证机构需要对证书进行作废。</p>
 </li>
 </ul>
 </li>
-<li><p>认证机构的层次：<br><img src="/picture/PKI3.png" alt="pki3"></p>
+<li><p>认证机构的层次：<br><img src="https://yucs.github.io/picture/PKI3.png" alt="pki3"></p>
 </li>
 <li><p>其他参考：</p>
 <ul>
@@ -501,19 +501,19 @@
 <li>随机性：不存在统计学偏差，完全杂乱的数列</li>
 <li>不可预测性：不能从过去的数列推测出下一个出现的数</li>
 <li>不可重复性：除非将数列本身保存下来，否则不能重现相同的数列.</li>
-<li><img src="/picture/随机数.png" alt="随机数"></li>
+<li><img src="https://yucs.github.io/picture/随机数.png" alt="随机数"></li>
 <li>伪随机数生成器<ul>
-<li>根据外部输入的种子生产伪随机数列<br><img src="/picture/伪随机生成器.png" alt="伪随机生成器"></li>
+<li>根据外部输入的种子生产伪随机数列<br><img src="https://yucs.github.io/picture/伪随机生成器.png" alt="伪随机生成器"></li>
 <li>伪随机数生成器是公开，但种子需要自己保密，这类似密码算法是公开，而密钥要自己保密。</li>
 <li>具体的伪随机数生成器</li>
-<li>很多伪随机数生成器的库函数使用线性同余法编写，但是不具备不可预测性，不能用于密码技术。<br><img src="/picture/线性同余法.png" alt="线性同余法"> </li>
-<li>用密码实现伪随机数生成器<br><img src="/picture/密码实现伪随机生成器.png" alt="密码实现伪随机生成器"> </li>
+<li>很多伪随机数生成器的库函数使用线性同余法编写，但是不具备不可预测性，不能用于密码技术。<br><img src="https://yucs.github.io/picture/线性同余法.png" alt="线性同余法"> </li>
+<li>用密码实现伪随机数生成器<br><img src="https://yucs.github.io/picture/密码实现伪随机生成器.png" alt="密码实现伪随机生成器"> </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p> <img src="/picture/密码工具箱小结.png" alt="密码工具箱小结"> </p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p> <img src="https://yucs.github.io/picture/密码工具箱小结.png" alt="密码工具箱小结"> </p>
 <ul>
 <li>密钥是机密性的精华</li>
 <li>散列值是完整性的精华</li>

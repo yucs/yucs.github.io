@@ -105,7 +105,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/picture/分布式系统模型.png">
 <meta property="og:image" content="https://yucs.github.io/picture/rpc_failure.png">
-<meta property="og:updated_time" content="2017-12-09T03:00:59.000Z">
+<meta property="og:updated_time" content="2017-12-14T12:22:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 分布式系统之基础介绍">
 <meta name="twitter:description" content="学习分布式系统要先了解该系统的整体架构，各个组件作用功能，运行时态的各个组件间互动的关系，核心主逻辑的在各个组件的调用逻辑。整体架构把握后，然后再看各个组件具体工作原理，再进一步看源码了解细节。 《分布式系统原理介绍》第一章 分布式系统模型：   异常是常态：分布式系统核心问题之一就是处理各种异常(failure)情况。  TCP 协议保证了 TCP 协议 栈之间的可靠的传输，但无法保证两个上层应">
@@ -416,7 +416,7 @@
       
         <p>学习分布式系统要先了解该系统的整体架构，各个组件作用功能，运行时态的各个组件间互动的关系，核心主逻辑的在各个组件的调用逻辑。整体架构把握后，然后再看各个组件具体工作原理，再进一步看源码了解细节。</p>
 <h1 id="《分布式系统原理介绍》第一章"><a href="#《分布式系统原理介绍》第一章" class="headerlink" title="《分布式系统原理介绍》第一章"></a>《分布式系统原理介绍》第一章</h1><ul>
-<li><p>分布式系统模型：<br><img src="/picture/分布式系统模型.png" alt="分布式系统模型"> </p>
+<li><p>分布式系统模型：<br><img src="https://yucs.github.io/picture/分布式系统模型.png" alt="分布式系统模型"> </p>
 </li>
 <li><p>异常是常态：分布式系统核心问题之一就是处理各种异常(failure)情况。</p>
 </li>
@@ -427,7 +427,7 @@
 </li>
 </ul>
 <ul>
-<li><p>由于网络异常的存在，分布式系统中请求结果存在“三态”的概念：成功、 失败、 超时(未 知)。对于超时的请求，我们无法获知该 请求是否被节点 B 成功执行了，因此要特殊处理，一种简单处理方式，就是调用接口要幂等性（分布式系统设计中，幂等性很重要，可以保证系统状态的正确性）。<br><img src="/picture/rpc_failure.png" alt="rpc_failure"></p>
+<li><p>由于网络异常的存在，分布式系统中请求结果存在“三态”的概念：成功、 失败、 超时(未 知)。对于超时的请求，我们无法获知该 请求是否被节点 B 成功执行了，因此要特殊处理，一种简单处理方式，就是调用接口要幂等性（分布式系统设计中，幂等性很重要，可以保证系统状态的正确性）。<br><img src="https://yucs.github.io/picture/rpc_failure.png" alt="rpc_failure"></p>
 </li>
 <li><p>在工程实践中，大量异常情况是无法预先可知的：例如，磁盘故障会导致 IO 操作缓慢，从而有可能使得进程运行速度非常慢，进而对整个系统会造成影响。又例如网络不稳定时也会引起“半死不活”异常，例如网络发生严重 拥塞时约等于网络不通，过一会儿又恢复，恢复后又拥塞，如此交替。</p>
 </li>
