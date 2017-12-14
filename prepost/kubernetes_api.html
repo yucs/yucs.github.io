@@ -95,16 +95,19 @@
 
 
 
-<meta name="description" content="Welcome to yucs   知识的搬运工      记录点滴">
+<meta name="description" content="kubernetes extend API两种方式： api接口  Kubernetes API 分析 ( Kube-apiserver )  https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong- https://then">
 <meta property="og:type" content="website">
 <meta property="og:title" content="yucs&#39;s Blog">
-<meta property="og:url" content="https://yucs.github.io/tags/编程语言/index.html">
+<meta property="og:url" content="https://yucs.github.io/prepost/kubernetes_api.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="Welcome to yucs   知识的搬运工      记录点滴">
+<meta property="og:description" content="kubernetes extend API两种方式： api接口  Kubernetes API 分析 ( Kube-apiserver )  https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong- https://thenewstack.io/extend-kubernetes-1-7-custom-">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yucs.github.io/picture/pod_create.png">
+<meta property="og:updated_time" content="2017-12-13T08:04:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yucs&#39;s Blog">
-<meta name="twitter:description" content="Welcome to yucs   知识的搬运工      记录点滴">
+<meta name="twitter:description" content="kubernetes extend API两种方式： api接口  Kubernetes API 分析 ( Kube-apiserver )  https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong- https://thenewstack.io/extend-kubernetes-1-7-custom-">
+<meta name="twitter:image" content="https://yucs.github.io/picture/pod_create.png">
 
 
 
@@ -132,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://yucs.github.io/tags/编程语言/"/>
+  <link rel="canonical" href="https://yucs.github.io/prepost/kubernetes_api.html"/>
 
 
 
 
 
-  <title>标签: 编程语言 | yucs's Blog</title>
+  <title> | yucs's Blog</title>
   
 
 
@@ -163,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -291,44 +294,33 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>编程语言<small>标签</small>
-      </h1>
-    </div>
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/22/2017-11-22-languge/" itemprop="url">
-              
-                <span itemprop="name">学好编程语言的方法论（心得）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-22T00:00:00+08:00"
-              content="2017-11-22" >
-          11-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+    
+      <h1 id="kubernetes-extend-API"><a href="#kubernetes-extend-API" class="headerlink" title="kubernetes extend API"></a>kubernetes extend API</h1><p>两种方式：<br> api接口</p>
+<ul>
+<li><a href="https://www.kubernetes.org.cn/3119.html" target="_blank" rel="noopener">Kubernetes API 分析 ( Kube-apiserver )</a></li>
+</ul>
+<p><a href="https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong-" target="_blank" rel="noopener">https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong-</a></p>
+<p><a href="https://thenewstack.io/extend-kubernetes-1-7-custom-resources/" target="_blank" rel="noopener">https://thenewstack.io/extend-kubernetes-1-7-custom-resources/</a><br><a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/</a><br><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md" target="_blank" rel="noopener">https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md</a><br><a href="https://coreos.com/blog/introducing-operators.html" target="_blank" rel="noopener">https://coreos.com/blog/introducing-operators.html</a></p>
+<p><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/</a><br><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/" target="_blank" rel="noopener">https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/</a></p>
+<p>最新1.8 重构过，代码差异比较大：<a href="http://dockone.io/article/2159" target="_blank" rel="noopener">Kubernetes1.5源码分析(一) apiServer启动分析</a></p>
+<p><a href="https://www.kubernetes.org.cn/174.html" target="_blank" rel="noopener">apiserver的list-watch代码解读</a></p>
+<p>重构比较大<br>从Kubernetes 1.7开始，所有需要监控资源变化情况的调用均推荐使用Informer。Informer提供了基于事件通知的只读缓存机制，可以注册资源变化的回调函数，并可以极大减少API的调用。</p>
+<p><a href="https://www.kubernetes.org.cn/2693.html" target="_blank" rel="noopener">Kubernetes Informer 详解</a><br><img src="/picture/pod_create.png" alt="pod_create"></p>
+<p><a href="http://blog.csdn.net/WaltonWang/article/list/1" target="_blank" rel="noopener">http://blog.csdn.net/WaltonWang/article/list/1</a></p>
+<p><a href="http://cizixs.com/" target="_blank" rel="noopener">http://cizixs.com/</a> </p>
 
     
   </div>
-
-  
 
 
           </div>
@@ -336,6 +328,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -356,8 +359,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -446,6 +458,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubernetes-extend-API"><span class="nav-number">1.</span> <span class="nav-text">kubernetes extend API</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -591,6 +619,18 @@
       <script id="dsq-count-scr" src="https://http-yucs-github-io.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://yucs.github.io/prepost/kubernetes_api.html';
+          this.page.identifier = 'prepost/kubernetes_api.html';
+          this.page.title = '';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://http-yucs-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

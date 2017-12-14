@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Kubernetes," />
 
 
 
@@ -95,16 +95,23 @@
 
 
 
-<meta name="description" content="Welcome to yucs   知识的搬运工      记录点滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yucs&#39;s Blog">
-<meta property="og:url" content="https://yucs.github.io/tags/编程语言/index.html">
+<meta name="description" content="概要 存储选型思考  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化） 数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求 简单方案可以采">
+<meta name="keywords" content="Kubernetes">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" Kubernetes之存储学习整理">
+<meta property="og:url" content="https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/index.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="Welcome to yucs   知识的搬运工      记录点滴">
+<meta property="og:description" content="概要 存储选型思考  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化） 数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求 简单方案可以采用如hostpath等本地存储方案，妥协点是数据无法迁移（当然，一般数据类系统">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yucs.github.io/picture/K8S_volume_arch.png">
+<meta property="og:image" content="https://yucs.github.io/picture/k8s_volume_arch2.png">
+<meta property="og:image" content="https://yucs.github.io/picture/PV_status.png">
+<meta property="og:image" content="https://yucs.github.io/picture/pvc_status.png">
+<meta property="og:updated_time" content="2017-12-14T02:31:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yucs&#39;s Blog">
-<meta name="twitter:description" content="Welcome to yucs   知识的搬运工      记录点滴">
+<meta name="twitter:title" content=" Kubernetes之存储学习整理">
+<meta name="twitter:description" content="概要 存储选型思考  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化） 数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求 简单方案可以采用如hostpath等本地存储方案，妥协点是数据无法迁移（当然，一般数据类系统">
+<meta name="twitter:image" content="https://yucs.github.io/picture/K8S_volume_arch.png">
 
 
 
@@ -132,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://yucs.github.io/tags/编程语言/"/>
+  <link rel="canonical" href="https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/"/>
 
 
 
 
 
-  <title>标签: 编程语言 | yucs's Blog</title>
+  <title> Kubernetes之存储学习整理 | yucs's Blog</title>
   
 
 
@@ -163,7 +170,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -291,44 +298,369 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>编程语言<small>标签</small>
-      </h1>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yucs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yucs's Blog">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"> Kubernetes之存储学习整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T00:00:00+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
+                    <span itemprop="name">Kubernetes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/14/2017-12-14-kubernetes_volume/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/14/2017-12-14-kubernetes_volume/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/14/2017-12-14-kubernetes_volume/" class="leancloud_visitors" data-flag-title=" Kubernetes之存储学习整理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><ul>
+<li><p>存储选型思考</p>
+<ul>
+<li>一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化）</li>
+<li>数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求<ul>
+<li>简单方案可以采用如hostpath等本地存储方案，妥协点是数据无法迁移（当然，一般数据类系统 添加删除节点时，本身有负载均衡功能，所以可以通过  删除节点，添加新节点 这种“迁移”方式，迁移过程就是对服务有可能所影响）</li>
+<li>使用网络块存储（block device）（性能高的SAN存储）: 跟平台解耦，灵活迁移，代价就是延时有些高，性能有些低（像couchbase 这类内存Nosql，数据在内存，通过异步刷新数据到磁盘 ，对磁盘读写延迟一些可以接受的）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发存储插件</p>
+<ul>
+<li>背景：X银行往往有自己的高性能的SAN存储系统，需要进行对接，块设备挂载本地后使用LVM。<ul>
+<li>基于<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md" target="_blank" rel="noopener">FlexVolume</a>:  <a href="https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/flexvolume" target="_blank" rel="noopener">lvm</a> 根据需求二次定制就好了。</li>
+<li>（可选）参考<a href="https://github.com/kubernetes-incubator/external-storage" target="_blank" rel="noopener">external-storage</a>:<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/docs/demo/hostpath-provisioner" target="_blank" rel="noopener">hostPath demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><a href="https://feisky.gitbooks.io/kubernetes/concepts/volume.html" target="_blank" rel="noopener">kubernetes指南：存储</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/storage/volumes/" target="_blank" rel="noopener">官方文档</a></p>
+<p><a href="http://ibm.biz/opentech-ma" target="_blank" rel="noopener">IBM开源技术微讲堂:Kubernetes的存储管理</a>（好）</p>
+<ul>
+<li><p>volume :</p>
+<ul>
+<li><p>Kubernetes Volume的生命周期与Pod绑定,容器挂掉后Kubelet再次重启容器时，Volume的数据依然还在.</p>
+</li>
+<li><p>而Pod删除时，Volume才会清理。数据是否丢失取决于具体的Volume类型，比如emptyDir的数据会丢失，而PV的数据则不会丢. (官方文档: which is erased when a Pod is removed, the contents of a cephfs volume(其他网络存储一样，即PV) are preserved and the volume is merely unmounted.)</p>
+</li>
+<li>限制：<ul>
+<li>声明POD时，暴露出存储细节， 一般用户视角来说，可能不关心，有一定的耦合。</li>
+<li>不包含对第三方存储的管理：在声明POD前，对于第三方存储，要先创建好对应的volume,删除POD也需要手动删除volume资源。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PV(Persistent Volumes)，PersistentVolumeClaim (PVC),StorageClass:</p>
+<ul>
+<li>为了解决volume的限制，更加方便自动化。</li>
+<li>概念：<ul>
+<li>PersistentVolume（PV）是集群之中的一块网络存储。跟 Node 一样，也是集群的资源。相对于 Volume 会有独立于 Pod 的生命周期（有 PV controller来实现PV/PVC的生命周期）。</li>
+<li>而PersistentVolumeClaim (PVC) 是对 PV 的请求,pod声明使用它。（ 从Storage Admin与用户的角度看PV与PVC :Admin创建和维护PV; 用户只需要使用PVC(size &amp; access mode).</li>
+<li>StorageClass来动态创建PV，不仅节省了管理员的时间，还可以封装不同类型的存储供PVC选用。就是封装了对第三方网络存储的管理操作，这样就不用手动创建volume或者手动声明一个PV。（所以，最灵活做法声明POD使用PVC,而PVC使用StorageClass）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><a href="http://ibm.biz/opentech-ma" target="_blank" rel="noopener">IBM开源技术微讲堂:Kubernetes的存储管理</a> </p>
+<p><a href="http://newto.me/k8s-storage-architecture/" target="_blank" rel="noopener">Kuberenetes 存储架构总体介绍</a></p>
+<p><a href="http://newto.me/k8s-csi-design/" target="_blank" rel="noopener">Kubernetes存储介绍系列 ——CSI plugin设计</a></p>
+<p><a href="http://newto.me/k8s-adcontroller-caches/" target="_blank" rel="noopener">Kubernetes存储介绍系列 —— AttachDetachController1</a></p>
+<p><a href="http://dockone.io/article/2082" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（一）</a></p>
+<p><a href="http://dockone.io/article/2087" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（二）</a></p>
+<p><img src="/picture/K8S_volume_arch.png" alt="K8S_volume_arch"><br><img src="/picture/k8s_volume_arch2.png" alt="k8s_volume_arch2"></p>
+<ul>
+<li>Volume Plugins <ul>
+<li>存储提供的扩展接口, 包含了各类存储提供者的plugin实现。</li>
+<li>实现自定义的Plugins 可以通过FlexVolume(K8s 1.8版本，目前算是过度方案)</li>
+<li>kubernetes 1.9以后可能推荐CSI（Container Storage Interface）用方式来实现。<ul>
+<li>支持这套标准以后，K8S和存储提供者之间将彻底解耦，终极目标是将存储的所有的部件作为sidecar container运行在K8S上（当前K8s 1.8版本设计还没有完全做到，需要一个兼容的发展周期），而不再作为K8S部件运行在host上。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Volume Manager <ul>
+<li>运行在kubelet 里让存储Ready的部件，主要是mount/unmount（attach/detach可选）</li>
+<li>pod调度到这个node上后才会有卷的相应操作，所以它的触发端是kubelet（严格讲是kubelet里的pod manager），根据Pod Manager里pod spec里申明的存储来触发卷的挂载操作<ul>
+<li>Kubelet会监听到调度到该节点上的pod声明，会把pod缓存到Pod Manager中，VolumeManager通过Pod Manager获取PV/PVC的状态，并进行分析出具体的attach/detach、mount/umount, 操作然后调用plugin进行相应的业务处理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PV/PVC Controller </p>
+<ul>
+<li>运行在Master上的部件，主要做provision/delete</li>
+<li>PV Controller和K8S其它组件一样监听API Server中的资源更新，对于卷管理主要是监听PV，PVC， SC三类资源，当监听到这些资源的创建、删除、修改时，PV Controller经过判断是需要做创建、删除、绑定、回收等动作。</li>
+</ul>
+</li>
+<li><p>Attach/Detach Controller</p>
+<ul>
+<li>运行在Master上，主要做一些块设备（block device）的attach/detach（eg:rbd,cinder块设备需要在mount之前先挂载到主机上，看源码看哪那些实现了Attah接口)</li>
+<li>非必须controller: 为了在attach卷上支持plugin headless形态，Controller Manager提供配置可以禁用。  </li>
+<li>它的核心职责就是当API Server中，有卷声明的pod与node间的关系发生变化时，需要决定是通过调用存储插件将这个pod关联的卷attach到对应node的主机（或者虚拟机）上，还是将卷从node上detach掉.</li>
+</ul>
+</li>
+<li><p>K8s挂载卷的基本过程</p>
+<ul>
+<li>用户创建Pod包含一个PVC</li>
+<li>Pod被分配到节点NodeA</li>
+<li>Kubelet等待Volume Manager准备设备</li>
+<li>PV controller调用相应Volume Plugin(in-tree或者out-of-tree)创建持久化卷并在系统中创建 PV对象以及其与PVC的绑定(Provision)</li>
+<li>Attach/Detach controller或者Volume Manager通过Volume Plugin实现块设备挂载(Attach)<ul>
+<li>Volume Manager等待设备挂载完成，将卷挂载到节点指定目录(mount)</li>
+<li>/var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/vol-xxxxxxxxxxxxxxxxx</li>
+<li>Kubelet在被告知设备准备好后启动Pod中的容器，利用Docker –v等参数将已经挂载到本地 的卷映射到容器中(volume mapping)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PV &amp; PVC状态图<br>PV的状态图：<br>  <img src="/picture/PV_status.png" alt="pv"><br> PVC的状态图:<br>  <img src="/picture/pvc_status.png" alt="pvc"></p>
+</li>
+</ul>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>Volume Manager : <a href="http://www.voidcn.com/article/p-dtoyjptm-bog.html" target="_blank" rel="noopener">kubernetes数据卷管理源码分析</a></p>
+<ul>
+<li><p>kubelet管理volume的方式基于两个不同的状态：</p>
+<ul>
+<li>DesiredStateOfWorld：预期中，pod对volume的使用情况，简称预期状态。当pod.yaml定制好volume，并提交成功，预期状态就已经确定.</li>
+<li>ActualStateOfWorld：实际中，pod对voluem的使用情况，简称实际状态。实际状态是kubelet的后台线程监控的结果.</li>
+</ul>
+</li>
+<li><p>vm.desiredStateOfWorldPopulator.Run方法根据从apiserver同步到的pod信息，来更新DesiredStateOfWorld。另外一个方法vm.reconciler.Run，是预期状态和实际状态的协调者，它负责将实际状态调整成与预期状态。预期状态的更新实现，以及协调者具体如何协调.</p>
+</li>
+</ul>
+<p>PVcontroller: <a href="http://dockone.io/article/2087" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（二）</a></p>
+<h1 id="开发资源"><a href="#开发资源" class="headerlink" title="开发资源"></a>开发资源</h1><ul>
+<li><p>volume plugin</p>
+<ul>
+<li>基于<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md" target="_blank" rel="noopener">FlexVolume</a>:  <a href="https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/flexvolume" target="_blank" rel="noopener">lvm</a></li>
+<li>基于<a href="https://github.com/container-storage-interface/spec/blob/master/spec.md" target="_blank" rel="noopener">CSI</a>: 等待 k8s release 版本支持后</li>
+</ul>
+</li>
+<li><p>Out-of-Tree Provisioner</p>
+<ul>
+<li>由于在Pod中声明volume有局限性，要更灵活的化，就需要pv controller等进行生命周期的管理。</li>
+<li><a href="https://github.com/kubernetes-incubator/external-storage" target="_blank" rel="noopener">external-storage</a>:<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/docs/demo/hostpath-provisioner" target="_blank" rel="noopener">hostPath demo</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>本文出处：<a href="https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/">https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/</a><br>如有出入请请教，文章持续更新中…</p>
 
-      <h2 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/11/22/2017-11-22-languge/" itemprop="url">
-              
-                <span itemprop="name">学好编程语言的方法论（心得）</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h2>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div><strong><div style="color:#00F">如果觉得我写的帮助到您，请随意打赏，是我最大的肯定和动力</div> </strong></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/picture/WechatIMG2.jpeg" alt="yucs WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-22T00:00:00+08:00"
-              content="2017-11-22" >
-          11-22
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/09/2017-12-9-分布式系统原理之基础介绍/" rel="next" title=" 分布式系统之基础介绍">
+                <i class="fa fa-chevron-left"></i>  分布式系统之基础介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!--MOB SHARE BEGIN-->
+ <div class="-mob-share-ui-button -mob-share-open">分享</div>
+ <div class="-mob-share-ui" style="display: none">
+     <ul class="-mob-share-list">
+         <li class="-mob-share-weibo"><p>新浪微博</p></li>
+         <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+         <li class="-mob-share-qzone"><p>QQ空间</p></li>
+         <li class="-mob-share-qq"><p>QQ好友</p></li>
+         <li class="-mob-share-weixin"><p>微信</p></li>
+         <li class="-mob-share-douban"><p>豆瓣</p></li>
+         <li class="-mob-share-renren"><p>人人网</p></li>
+         <li class="-mob-share-kaixin"><p>开心网</p></li>
+         <li class="-mob-share-facebook"><p>Facebook</p></li>
+         <li class="-mob-share-twitter"><p>Twitter</p></li>
+         <li class="-mob-share-pocket"><p>Pocket</p></li>
+         <li class="-mob-share-google"><p>Google+</p></li>
+         <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+         <li class="-mob-share-mingdao"><p>明道</p></li>
+         <li class="-mob-share-pengyou"><p>朋友网</p></li>
+         <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+         <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+         <li class="-mob-share-linkedin"><p>LinkedIn</p></li>
+     </ul>
+    <div class="-mob-share-close">取消</div>
+ </div>
+ <div class="-mob-share-ui-bg"></div>
+ <script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=1f85dd74c1b48"></script>
+ <!--MOB SHARE END-->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -336,6 +668,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -356,8 +699,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -446,6 +798,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概要"><span class="nav-number">1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">4.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发资源"><span class="nav-number">5.</span> <span class="nav-text">开发资源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -570,10 +938,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -591,6 +959,18 @@
       <script id="dsq-count-scr" src="https://http-yucs-github-io.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/';
+          this.page.identifier = '2017/12/14/2017-12-14-kubernetes_volume/';
+          this.page.title = ' Kubernetes之存储学习整理';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://http-yucs-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

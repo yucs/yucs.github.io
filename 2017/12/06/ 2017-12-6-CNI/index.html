@@ -104,7 +104,7 @@
 <meta property="og:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/picture/CNI.png">
-<meta property="og:updated_time" content="2017-12-08T09:02:09.000Z">
+<meta property="og:updated_time" content="2017-12-14T02:31:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Kubernetes网络插件CNI学习整理">
 <meta name="twitter:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
@@ -492,7 +492,6 @@
 </ul>
 </li>
 <li>RunKubelet 函数:<ul>
-<li>初始化各个对象，比如 eventBroadcaster，这样就能给 apiserver 发送 kubelet 的事件</li>
 <li>通过 builder 创建出来 Kubelet对象（pkg/kubelet/kubelet.go#NewMainKubelet）</li>
 <li>根据运行模式，运行 Kubelet对象，各种组件以 goroutine运行启动<ul>
 <li>异步事件驱动：syncLoop 是 kubelet 的主循环方法，它从不同的管道（文件、URL 和 apiserver）监听变化，并把它们汇聚起来。当有新的变化发生时，它会调用对应的处理函数，保证 pod 处于期望的状态。</li>
@@ -525,6 +524,8 @@
 </ul>
 </li>
 </ul>
+<hr>
+<p>文章出处： <a href="https://yucs.github.io/2017/12/06/%202017-12-6-CNI/">https://yucs.github.io/2017/12/06/%202017-12-6-CNI/</a><br>如有出入请请教，文章持续更新中…</p>
 
       
     </div>
@@ -704,7 +705,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -715,7 +716,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -726,7 +727,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
