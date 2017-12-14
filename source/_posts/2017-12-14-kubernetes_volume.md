@@ -1,9 +1,9 @@
 
 ---
 layout:     post
-title:      " Kubernetes之volume学习整理"
+title:      " Kubernetes之存储学习整理"
 subtitle:   " Kubernetes之volume学习整理"
-date:       2017-12-15
+date:       2017-12-14
 author:     "yucs"
 catalog:    true
 categories: 
@@ -14,11 +14,23 @@ tags:
       
 ---
 
+
+
 #  概要
 
-(,有一定的非自动化（相对PV来讲，简单方便，定制适应性更强。而PV自动化复杂，而这也简单方便，定制适应性更强）)
- 
 
+- 存储选型思考
+ -  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化）
+  -  数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求
+     -  简单方案可以采用如hostpath等本地存储方案，妥协点是数据无法迁移（当然，一般数据类系统 添加删除节点时，本身有负载均衡功能，所以可以通过  删除节点，添加新节点 这种“迁移”方式，迁移过程就是对服务有可能所影响）
+     -  使用网络块存储（block device）（性能高的SAN存储）: 跟平台解耦，灵活迁移，代价就是延时有些高，性能有些低（像couchbase 这类内存Nosql，数据在内存，通过异步刷新数据到磁盘 ，对磁盘读写延迟一些可以接受的）
+
+- 开发存储插件
+ - 背景：X银行往往有自己的高性能的SAN存储系统，需要进行对接，块设备挂载本地后使用LVM。
+      - 基于[FlexVolume](https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md):  [lvm](https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/flexvolume) 根据需求二次定制就好了。
+      - （可选）参考[external-storage](https://github.com/kubernetes-incubator/external-storage):[hostPath demo](https://github.com/kubernetes-incubator/external-storage/tree/master/docs/demo/hostpath-provisioner)
+
+ 
 
 # 概念
 [kubernetes指南：存储](https://feisky.gitbooks.io/kubernetes/concepts/volume.html)
@@ -110,8 +122,10 @@ PVcontroller: [Kubernetes 存储功能和源码深度解析（二）](http://doc
 
 - Out-of-Tree Provisioner
  - 由于在Pod中声明volume有局限性，要更灵活的化，就需要pv controller等进行生命周期的管理。
- - [external-storage](https://github.com/kubernetes-incubator/external-storage)
+ - [external-storage](https://github.com/kubernetes-incubator/external-storage):[hostPath demo](https://github.com/kubernetes-incubator/external-storage/tree/master/docs/demo/hostpath-provisioner)
 
 
 -----
+本文出处：
+
 如有出入请请教，文章持续更新中...

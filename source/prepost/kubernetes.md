@@ -14,7 +14,7 @@ https://developer.ibm.com/cn/tv/2017/opentec-k8s/
  
 # 原理架构
   [Kubernetes指南](https://github.com/feiskyer/kubernetes-handbook)
- 
+  [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
 # 组件核心之etcd 
 
 
@@ -23,13 +23,12 @@ https://developer.ibm.com/cn/tv/2017/opentec-k8s/
 
 # kubernetes extend API 
 两种方式：
-
  api接口
 - [Kubernetes API 分析 ( Kube-apiserver )](https://www.kubernetes.org.cn/3119.html)
 
 https://kubernetes.io/docs/api-reference/v1.8/#-strong-api-overview-strong-
 
-https://thenewstack.io/extend-kubernetes-1-7-custom-resources/
+[Extend Kubernetes 1.7 with Custom Resources](https://thenewstack.io/extend-kubernetes-1-7-custom-resources/)
 https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/
 https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md
 https://coreos.com/blog/introducing-operators.html
@@ -41,13 +40,18 @@ https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/
 
 [apiserver的list-watch代码解读](https://www.kubernetes.org.cn/174.html)
 
+调度
+
 
 https://github.com/kubernetes/community
 
 #controller
+https://github.com/kubernetes/community/blob/8decfe4/contributors/devel/controllers.md
 
+https://blog.openshift.com/kubernetes-deep-dive-code-generation-customresources/
 #schedule
 
+http://dockone.io/article/2625
 
 # 网络基本常识
 http://www.sdnlab.com/17141.html
@@ -68,5 +72,8 @@ https://github.com/grtl/mysql-operator
 https://github.com/kubernetes/client-go
 
 
+[ kubernetes集群问题排查](http://blog.csdn.net/huwh_/article/details/71308301)
 
-e
+
+
+
