@@ -99,7 +99,7 @@ tags:
   PV的状态图：
     ![pv](/picture/PV_status.png)
    PVC的状态图:
-    ![pvc](picture/pvc_status.png)
+    ![pvc](/picture/pvc_status.png)
 
 
 # 源码分析
@@ -126,6 +126,5 @@ PVcontroller: [Kubernetes 存储功能和源码深度解析（二）](http://doc
 
 
 -----
-本文出处：
-
+本文出处：https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/
 如有出入请请教，文章持续更新中...
