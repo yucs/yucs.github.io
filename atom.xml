@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yucs.github.io/"/>
-  <updated>2017-12-21T07:11:31.000Z</updated>
+  <updated>2017-12-26T05:18:50.000Z</updated>
   <id>https://yucs.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kubernetes的思考和那些标准</title>
+    <link href="https://yucs.github.io/2017/12/25/2017-12-25-kubernetes_interface/"/>
+    <id>https://yucs.github.io/2017/12/25/2017-12-25-kubernetes_interface/</id>
+    <published>2017-12-24T16:00:00.000Z</published>
+    <updated>2017-12-26T05:18:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><ul><li>CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准:<ul><li>部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。</li><li>稳定标准化方面：各种标准化完善被业界认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。</li><li>开发定制方面:整体架构的优雅灵活，系统可扩展性好，根据需求在不侵入源码下，可定制性强（client-go项目对开发友好），这样才能更好的解决各公司内部需求，实践落地成功。   </li><li>活跃度方面：贡献参与者多，社区活跃度高，各大公司的认可，无论存储，网络，容器方面都提供更多现成的选择，功能也越来越丰富，生态整体向好。</li></ul></li></ul><ul><li><p>在kubernetes和docker两大生态竞争中，毫无疑问kubernetes已胜出。</p></li><li><p>开源也是场各大公司之间的博弈，无烟的战场，谁掌握了标准的制定，就占领了制高点,一言不合就可以让竞争对手举步维艰。</p></li></ul><h1 id="CNCF"><a href="#CNCF" class="headerlink" title="CNCF"></a><a href="https://www.cncf.io/" target="_blank" rel="noopener">CNCF</a></h1><p><a href="https://github.com/cncf/landscape" target="_blank" rel="noopener">Cloud Native Landscape</a></p><p><a href="https://www.cncf.io/about/charter/" target="_blank" rel="noopener">CNCF charter</a></p><ul><li>CNCF是一个开源Linux基金会，它致力于推进云端原生应用和服务的开发.</li><li>CNCF 的一项重要承诺，就是为基于容器的各类技术的集成确立参考架。</li><li>CNCF’s community believe there are three core attributes to cloud native computing:<ul><li>Container packaged and distributed.</li><li>Dynamically scheduled.</li><li>Micro-services oriented.</li></ul></li><li>A cloud native computing system enables computing that builds on these core attributes, and embraces the ideals of:<ul><li>Openness and extensibility.</li><li>Well-defined APIs at borders of standardized subsystems.</li><li>Minimal barriers to application lifecycle management.</li></ul></li></ul><h1 id="容器标准（OCI）"><a href="#容器标准（OCI）" class="headerlink" title="容器标准（OCI）"></a>容器标准（OCI）</h1><p><a href="http://cizixs.com/2017/11/05/oci-and-runc" target="_blank" rel="noopener">OCI 和 runc：容器标准化和 docker</a></p><p><a href="http://www.cnblogs.com/xuxinkun/p/8036832.html" target="_blank" rel="noopener">docker、oci、runc以及kubernetes梳理</a></p><ul><li><a href="https://www.opencontainers.org/about" target="_blank" rel="noopener">OCI</a>（Open Container Initiative）<ul><li>是由多家公司共同成立的项目，并由linux基金会进行管理，致力于container runtime的标准的制定和runc的开发等工作。</li><li>使命就是推动容器标准化，容器能运行在任何的硬件和系统上，相关的组件也不必绑定在任何的容器运行时上.</li><li>目前主要有两个标准文档：容器运行时标准 <a href="https://github.com/opencontainers/runtime-spec" target="_blank" rel="noopener">runtime-spec</a>和 容器镜像标准<a href="https://github.com/opencontainers/image-spec" target="_blank" rel="noopener">image-spec</a></li></ul></li></ul><ul><li><p><a href="https://github.com/opencontainers/runc" target="_blank" rel="noopener">runc</a>: 是对于OCI标准的一个参考实现.</p></li><li><p><a href="https://kubernetes.feisky.xyz/plugins/CRI.html" target="_blank" rel="noopener">CRI</a>(Container Runtime Interface)</p><ul><li>kubernetes自己的运行时接口api,通过统一的接口与各个容器引擎之间进行互动。</li><li>基于 gRPC 定义了 RuntimeService 和 ImageService，分别用于容器运行时和镜像的管理.</li><li>与oci不同，cri与kubernetes的概念更加贴合，并紧密绑定。cri不仅定义了容器的生命周期的管理，还引入了k8s中pod的概念，并定义了管理pod的生命周期.</li></ul></li></ul><p><img src="https://yucs.github.io/picture/K8S_CRI.png" alt="K8S_CRI"></p><h1 id="CNI-容器网络接口"><a href="#CNI-容器网络接口" class="headerlink" title="CNI(容器网络接口)"></a>CNI(容器网络接口)</h1><p> <a href="https://github.com/containernetworking/cni" target="_blank" rel="noopener">CNI</a></p><p> <a href="https://kubernetes.feisky.xyz/network/cni/" target="_blank" rel="noopener">kubernetes指南:CNI</a></p><ul><li>Container Network Interface (CNI)最早是由CoreOS发起的容器网络规范，是Kubernetes网络插件的基础。其基本思想为：Container Runtime在创建容器时，先创建好network namespace，然后调用CNI插件为这个netns配置网络，其后再启动容器内的进程。现已加入CNCF，成为CNCF主推的网络模型.</li></ul><h1 id="CSI-容器存储接口"><a href="#CSI-容器存储接口" class="headerlink" title="CSI(容器存储接口)"></a>CSI(容器存储接口)</h1><p><a href="https://github.com/container-storage-interface/spec/blob/master/spec.md" target="_blank" rel="noopener">CSI spce</a></p><p><a href="http://newto.me/k8s-csi-design/" target="_blank" rel="noopener">Kubernetes存储介绍系列 ——CSI plugin设计</a></p><ul><li>CSI是Container Storage Interface的简称，旨在能为容器编排引擎和存储系统间建立一套标准的存储调用接口，通过该接口能为容器编排引擎提供存储服务。</li><li>在CSI之前，K8S里提供存储服务是通过一种称为“in-tree”的方式来提供，这种方式需要将存储提供者的代码逻辑放到K8S的代码库中运行，调用引擎与插件间属于强耦合，持这套标准以后，K8S和存储提供者之间将彻底解耦。</li></ul><hr><p>markdown文件放在 <a href="https://github.com/yucs/yucs-awesome-resource" target="_blank" rel="noopener">github.com/yucs/yucs-awesome-resource</a> 持续更新，欢迎star ,watch</p><p>如有出入请请教，文章持续更新中…</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;思考&quot;&gt;&lt;a href=&quot;#思考&quot; class=&quot;headerlink&quot; title=&quot;思考&quot;&gt;&lt;/a&gt;思考&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准:&lt;ul&gt;
+&lt;li&gt;部署方面：kubernetes及社区 已经能够简
+      
+    
+    </summary>
+    
+      <category term="Kubernetes" scheme="https://yucs.github.io/categories/Kubernetes/"/>
+    
+    
+      <category term="Kubernetes" scheme="https://yucs.github.io/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kubernetes 学习资源汇总</title>
+    <link href="https://yucs.github.io/2017/12/22/2017-12-22-kubernetes_resource/"/>
+    <id>https://yucs.github.io/2017/12/22/2017-12-22-kubernetes_resource/</id>
+    <published>2017-12-21T16:00:00.000Z</published>
+    <updated>2017-12-26T05:18:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p><strong>资讯：</strong> <a href="http://weekly.dockone.io/index" target="_blank" rel="noopener">weekly.dockone.io</a></p></li><li><p><strong>gitbook:<a href="https://github.com/feiskyer/kubernetes-handbook" target="_blank" rel="noopener">Kubernetes指南</a></strong>（系统全面）</p></li><li><p><strong>gitbook: <a href="https://github.com/rootsongjc/kubernetes-handbook" target="_blank" rel="noopener">kubernetes-handbook</a></strong>(偏向实践)</p></li><li><p><strong>微课堂：</strong> <a href="https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/W30b0c771924e_49d2_b3b7_88a2a2bc2e43/page/IBM%E5%BC%80%E6%BA%90%E6%8A%80%E6%9C%AF%E5%BE%AE%E8%AE%B2%E5%A0%82" target="_blank" rel="noopener">IBM开源技术微讲堂 kuberntes系列</a></p></li></ul><ul><li>技术博客<ul><li><a href="https://yucs.github.io/categories/Kubernetes/">我的kubernets整理学习系列</a></li><li><a href="http://cizixs.com/" target="_blank" rel="noopener">cizixs</a> （主要kubelet源码分析）</li><li><a href="http://blog.csdn.net/WaltonWang/article/list/1" target="_blank" rel="noopener">WaltonWang</a>（源码分析多）</li></ul></li></ul><hr><h1 id="实践生态"><a href="#实践生态" class="headerlink" title="实践生态"></a>实践生态</h1><p><a href="https://mp.weixin.qq.com/s/vyUi1V4pmYQr5_9T2Qqygg" target="_blank" rel="noopener">Kubernetes的工业级实践</a></p><a href="!--[我的kubernets整理学习系列](https://yucs.github.io/categories/Kubernetes/)各文章包含的链接就不在这重复列出--">!--[我的kubernets整理学习系列](https://yucs.github.io/categories/Kubernetes/)各文章包含的链接就不在这重复列出--</a><h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ul><li><p><a href="https://github.com/gjmzj/kubeasz" target="_blank" rel="noopener">利用Ansible部署kubernetes集群</a>： 官方kubeadm下载的镜像需要翻墙，国内网络环境下使用<a href="https://github.com/gjmzj/kubeasz/blob/master/docs/quickStart.md" target="_blank" rel="noopener">AllInOne</a>部署更方便，单机多主机部署都支持。</p><ul><li><p>基于二进制方式部署和利用ansible-playbook实现自动化：既提供一键安装脚本，也可以分步执行安装各个组件，同时讲解每一步主要参数配置和注意事项。</p></li><li><p>二进制方式部署优势：有助于理解系统各组件的交互原理和熟悉组件启动参数，有助于快速排查解决实际问题</p></li></ul></li></ul><!---- [Kubernetes指南 之 kubeadm工作原理](https://github.com/feiskyer/kubernetes-handbook/blob/master/components/kubeadm.md)[kubeadm工作机制分析](http://blog.csdn.net/waltonwang/article/details/70162993)- [源码分析之kubeadm](http://blog.csdn.net/u010278923/article/details/70225173)--> <h1 id="schedule"><a href="#schedule" class="headerlink" title="schedule"></a>schedule</h1><ul><li><a href="http://dockone.io/article/2885" target="_blank" rel="noopener">Kubernetes调度详解</a></li><li><a href="http://dockone.io/article/2625" target="_blank" rel="noopener">Kubernetes Scheduler是如何工作的</a></li></ul><h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><ul><li><p><a href="https://www.kubernetes.org.cn/3119.html" target="_blank" rel="noopener">Kubernetes API 分析 ( Kube-apiserver )</a></p></li><li><p><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md" target="_blank" rel="noopener">api-conventions</a></p></li><li><p><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-1/" target="_blank" rel="noopener">Kubernetes deep dive: API Server – part 1</a></p></li><li><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-2/" target="_blank" rel="noopener">Kubernetes deep dive: API Server – part 2</a></li><li><a href="https://blog.openshift.com/kubernetes-deep-dive-api-server-part-3a/" target="_blank" rel="noopener">ubernetes deep dive: API Server – part 3</a></li></ul><!-- 最新1.8 重构过，代码差异比较大：[Kubernetes1.5源码分析(一) apiServer启动分析](http://dockone.io/article/2159)[apiserver的list-watch代码解读](https://www.kubernetes.org.cn/174.html)--><h1 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h1><ul><li><a href="https://ggaaooppeenngg.github.io/zh-CN/2017/11/27/kube-controller-%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">kube-controller-manager 分析</a></li></ul><!--- node conroller  - [Kubernetes Node Controller源码分析之配置篇](http://blog.csdn.net/waltonwang/article/details/75269847)  - [Kubernetes Node Controller源码分析之执行篇]()  - [Kubernetes Node Controller源码分析之创建篇](http://blog.csdn.net/waltonwang/article/details/76359220)  - [Kubernetes Node Controller源码分析之Taint Controller](http://blog.csdn.net/waltonwang/article/details/76474386)--><!--![pod_create](/picture/pod_create.png)--> <h1 id="event"><a href="#event" class="headerlink" title="event"></a>event</h1><ul><li><a href="https://www.kubernetes.org.cn/1031.html" target="_blank" rel="noopener">Kubernetes(K8s)Events介绍（上）</a></li><li><a href="https://www.kubernetes.org.cn/1090.html" target="_blank" rel="noopener">Kubernetes Events介绍（中）</a></li><li><a href="https://www.kubernetes.org.cn/1195.html" target="_blank" rel="noopener">Kubernetes Events介绍（下）</a></li><li><a href="http://cizixs.com/2017/06/22/kubelet-source-code-analysis-part4-event" target="_blank" rel="noopener">kubelet 源码分析： 事件处理</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;资讯：&lt;/strong&gt; &lt;a href=&quot;http://weekly.dockone.io/index&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;weekly.dockone.io&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li
+      
+    
+    </summary>
+    
+      <category term="Kubernetes" scheme="https://yucs.github.io/categories/Kubernetes/"/>
+    
+    
+      <category term="Kubernetes" scheme="https://yucs.github.io/tags/Kubernetes/"/>
+    
+  </entry>
   
   <entry>
     <title>开发operator扩展kubernetes 资源整理</title>
