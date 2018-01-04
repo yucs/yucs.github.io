@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Kubernetes," />
+  <meta name="keywords" content="分布式系统," />
 
 
 
@@ -95,20 +95,18 @@
 
 
 
-<meta name="description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主">
-<meta name="keywords" content="Kubernetes">
+<meta name="description" content="2018年将这些作为主要参考资源写分布式系统系列，加深学习理解，作为读书笔记。 思考 简单唯美,简单意味着可控稳定性，具体实现过程也要懂得间断停下思考，更好更简单的解决实现方法 很多情况在于 灵光一现。   提高思维层次，考虑尽量周全,业务功能角度,非业务功能角度，墨菲定律，你考虑到的实际情况肯定会发生（尤其在网络这方">
+<meta name="keywords" content="分布式系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kubernetes网络插件CNI学习整理">
-<meta property="og:url" content="https://yucs.github.io/2017/12/06/2017-12-6-CNI/index.html">
+<meta property="og:title" content=" 分布式系统之学习资源推荐">
+<meta property="og:url" content="https://yucs.github.io/2018/01/04/2018-1-4-分布式系统资源推荐/index.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
+<meta property="og:description" content="2018年将这些作为主要参考资源写分布式系统系列，加深学习理解，作为读书笔记。 思考 简单唯美,简单意味着可控稳定性，具体实现过程也要懂得间断停下思考，更好更简单的解决实现方法 很多情况在于 灵光一现。   提高思维层次，考虑尽量周全,业务功能角度,非业务功能角度，墨菲定律，你考虑到的实际情况肯定会发生（尤其在网络这方面），当然，有条件最好请教 有经验的人 可能疏忽哪些方面的考虑。  技术用来解决">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yucs.github.io/picture/CNI.png">
-<meta property="og:updated_time" content="2017-12-19T02:15:04.000Z">
+<meta property="og:updated_time" content="2018-01-04T10:11:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kubernetes网络插件CNI学习整理">
-<meta name="twitter:description" content="概要 项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-I">
-<meta name="twitter:image" content="https://yucs.github.io/picture/CNI.png">
+<meta name="twitter:title" content=" 分布式系统之学习资源推荐">
+<meta name="twitter:description" content="2018年将这些作为主要参考资源写分布式系统系列，加深学习理解，作为读书笔记。 思考 简单唯美,简单意味着可控稳定性，具体实现过程也要懂得间断停下思考，更好更简单的解决实现方法 很多情况在于 灵光一现。   提高思维层次，考虑尽量周全,业务功能角度,非业务功能角度，墨菲定律，你考虑到的实际情况肯定会发生（尤其在网络这方面），当然，有条件最好请教 有经验的人 可能疏忽哪些方面的考虑。  技术用来解决">
 
 
 
@@ -136,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://yucs.github.io/2017/12/06/2017-12-6-CNI/"/>
+  <link rel="canonical" href="https://yucs.github.io/2018/01/04/2018-1-4-分布式系统资源推荐/"/>
 
 
 
 
 
-  <title>Kubernetes网络插件CNI学习整理 | yucs's Blog</title>
+  <title> 分布式系统之学习资源推荐 | yucs's Blog</title>
   
 
 
@@ -305,7 +303,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://yucs.github.io/2017/12/06/2017-12-6-CNI/">
+    <link itemprop="mainEntityOfPage" href="https://yucs.github.io/2018/01/04/2018-1-4-分布式系统资源推荐/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yucs">
@@ -322,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kubernetes网络插件CNI学习整理</h1>
+          <h1 class="post-title" itemprop="name headline"> 分布式系统之学习资源推荐</h1>
         
 
         <div class="post-meta">
@@ -334,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-06T00:00:00+08:00">
-                2017-12-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T00:00:00+08:00">
+                2018-01-04
               </time>
             
 
@@ -357,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Kubernetes/" itemprop="url" rel="index">
-                    <span itemprop="name">Kubernetes</span>
+                  <a href="/categories/分布式系统/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式系统</span>
                   </a>
                 </span>
 
@@ -375,9 +373,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/06/2017-12-6-CNI/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/04/2018-1-4-分布式系统资源推荐/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/06/2017-12-6-CNI/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/04/2018-1-4-分布式系统资源推荐/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -385,7 +383,7 @@
 
           
           
-             <span id="/2017/12/06/2017-12-6-CNI/" class="leancloud_visitors" data-flag-title="Kubernetes网络插件CNI学习整理">
+             <span id="/2018/01/04/2018-1-4-分布式系统资源推荐/" class="leancloud_visitors" data-flag-title=" 分布式系统之学习资源推荐">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -413,121 +411,45 @@
       
 
       
-        <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><ul>
-<li><p>项目背景（XX银行客户）：私有云上要在K8S上跑像mysql这类状态的数据库服务，对性能和延时都比较敏感，并不像web偏应用的无状态延时性能差点可接受。而基于overlay方式等网络性能和延时比较差，网络架构又比较复杂。并且银行对于IP网络管理需要简单可控。SR-IOV是基于硬件实现虚拟网卡，性能损失少，接近宿主机，此外有支持QOS,vlan等特性也是客户需要的。即要根据用户定制基于SR-IOV网络插件。</p>
+        <p>2018年将这些作为主要参考资源写分布式系统系列，加深学习理解，作为读书笔记。</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><ul>
+<li><p><strong>简单唯美</strong>,简单意味着可控稳定性，具体实现过程也要懂得间断停下思考，更好更简单的解决实现方法 很多情况在于 灵光一现。 </p>
 </li>
-<li><p>问题： 目前kubernetes（1.8）（以后版本可能支持大）中，POD并没有网络相关的配置，kubelete 调用 CNI plugin 默认只会以CNI_ARGS传入pod_name基本信息。如果要固定分配IP地址，以及配置QOS,vlan等网络特性，没法通过CNI_ARGS方式传入，不能像volume一样在pod SPEC中配置options可选的网络参数来传入cni plugin。 </p>
+<li><p><strong>提高思维层次，考虑尽量周全</strong>,业务功能角度,非业务功能角度，墨菲定律，你考虑到的实际情况肯定会发生（尤其在网络这方面），当然，有条件最好请教 有经验的人 可能疏忽哪些方面的考虑。</p>
 </li>
-</ul>
-<ul>
-<li>一种可行解决方案：声明一个POD前，先根据pod_name来在外部configMap或其他地方存放网络配置信息，定制的CNI，IPAM的网络插件根据pod_name来从外部获取配置信息。</li>
-</ul>
-<h1 id="CNI工作原理"><a href="#CNI工作原理" class="headerlink" title="CNI工作原理"></a>CNI工作原理</h1><p><a href="https://github.com/feiskyer/kubernetes-handbook/blob/master/network/cni/index.md" target="_blank" rel="noopener">Kubernetes指南  cni</a></p>
-<p><a href="http://cizixs.com/2017/05/23/container-network-cni" target="_blank" rel="noopener">CNI：容器网络接口</a></p>
-<ul>
-<li>网络插件是独立的可执行文件，被上层的容器管理平台调用。网络插件只有两件事情要做：把容器加入到网络以及把容器从网络中删除。</li>
-<li>调用插件的数据通过两种方式传递：环境变量和标准输入。</li>
-<li>kubernetes 使用了 CNI 网络插件之后 工作流程：<ul>
-<li>kubernetes 先创建 pause 容器生成对应的 network namespace</li>
-<li>调用网络 driver（因为配置的是 CNI，所以会调用 CNI 相关代码</li>
-<li>CNI driver 根据配置调用具体的 cni 插件</li>
-<li>cni 插件给 pause 容器配置正确的网络,pod 中其他的容器都是用 pause 的网络.</li>
-</ul>
+<li><p>技术用来解决需求的，开始阶段，对业务的理解，需求合理性的质疑，做减法（避免过渡设计等等），系统往往都是根据需求迭代，逐步完善，开始阶段就考虑设计成最终形态（各种的完美），这本生就是不合理的需求。</p>
 </li>
-</ul>
-<p><a href="http://dockone.io/article/2901" target="_blank" rel="noopener">Kubernetes的网络接口CNI及灵雀云的实践</a></p>
-<ul>
-<li>运维人员视角，在传统运维工作强调对IP要有很强的管控（银行等），POD需要固定IP:<ul>
-<li>于运维来说，网络方面是很重要的资源，要对IP进行强管控，服务来回飘，会让他的安全感下降很多。</li>
-<li>运维服务有很多基于IP的东西，有流量和突发的监控，如果你服务的IP一直变化，通过这个IP它很难用到这个服务，相当于IP的监控就没有意义，因为根本不知道IP流量上去了是哪个服务的，很难对应到这个事。</li>
-<li>还有是对于IP安全策略没有办法做。</li>
-<li>kubelet 与 CNI plugin调用逻辑图：<br><img src="https://yucs.github.io/picture/CNI.png" alt="cni"></li>
-</ul>
+<li><p>宁可考虑久些，也不要没考虑清楚就盲目开始写，走一步分析一步，这种情况，往往效率低下，代码质量低；</p>
 </li>
-</ul>
-<ul>
-<li><a href="https://thenewstack.io/hackers-guide-kubernetes-networking/" target="_blank" rel="noopener">hackers-guide-kubernetes-networking</a><ul>
-<li>Kubernetes unfortunately still supports only one CNI interface per POD with one cluster-wide configuration. This is very limiting since we may want to configure multiple network interfaces per POD, potentially using different overlay solutions with different policies (subnet, security, QoS).</li>
-<li>Kubelet will pass the POD name and namespace as part of the CNI_ARGS variable (for example “K8S_POD_NAMESPACE=default;K8S_POD_NAME=mytests-1227152546-vq7kw;” ). We can use this to customize the network configuration per POD or POD namespace (e.g. put every namespace in a different subnet). </li>
-<li>Future Kubernetes versions will treat networks as equal citizens and include network configuration as part of the POD or namespace spec just like memory, CPUs and volumes. For the time being, we can use annotations to store configuration or record POD networking data/state.</li>
-<li><a href="https://github.com/Intel-Corp/multus-cni" target="_blank" rel="noopener">multus-cni</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><a href="http://blog.csdn.net/waltonwang/article/details/72669826" target="_blank" rel="noopener">从源码看kubernetes与CNI Plugin的集成</a> </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">  //kubernetes/pkg/kubelet/network/cni/cni.go</span><br><span class="line">  func (plugin *cniNetworkPlugin) buildCNIRuntimeConf(podName string, podNs string, podSandboxID kubecontainer.ContainerID, podNetnsPath string) (*libcni.RuntimeConf, error) &#123;</span><br><span class="line">	rt := &amp;libcni.RuntimeConf&#123;</span><br><span class="line">		ContainerID: podSandboxID.ID,</span><br><span class="line">		NetNS:       podNetnsPath,</span><br><span class="line">		IfName:      network.DefaultInterfaceName,</span><br><span class="line">		Args: [][2]string&#123;</span><br><span class="line">			&#123;&quot;IgnoreUnknown&quot;, &quot;1&quot;&#125;,</span><br><span class="line">			&#123;&quot;K8S_POD_NAMESPACE&quot;, podNs&#125;,</span><br><span class="line">			&#123;&quot;K8S_POD_NAME&quot;, podName&#125;,</span><br><span class="line">			&#123;&quot;K8S_POD_INFRA_CONTAINER_ID&quot;, podSandboxID.ID&#125;,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"> //libcni </span><br><span class="line">func (c *CNIConfig) AddNetwork(net *NetworkConfig, rt *RuntimeConf)</span><br><span class="line">  invoke.ExecPluginWithResult(pluginPath, net.Bytes, c.args(&quot;ADD&quot;, rt))</span><br><span class="line">    //将RuntimeConf.Args以环境变量方式传入。</span><br><span class="line">    stdoutBytes, err := e.RawExec.ExecPlugin(pluginPath, netconf, args.AsEnv())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> type CNI interface &#123;</span><br><span class="line">	AddNetworkList(net *NetworkConfigList, rt *RuntimeConf) (types.Result, error)</span><br><span class="line">	DelNetworkList(net *NetworkConfigList, rt *RuntimeConf) error</span><br><span class="line"></span><br><span class="line">	AddNetwork(net *NetworkConfig, rt *RuntimeConf) (types.Result, error)</span><br><span class="line">	DelNetwork(net *NetworkConfig, rt *RuntimeConf) error</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type RuntimeConf struct &#123;</span><br><span class="line">	ContainerID string</span><br><span class="line">	NetNS       string</span><br><span class="line">	IfName      string</span><br><span class="line">	Args        [][2]string</span><br><span class="line">	// A dictionary of capability-specific data passed by the runtime</span><br><span class="line">	// to plugins as top-level keys in the &apos;runtimeConfig&apos; dictionary</span><br><span class="line">	// of the plugin&apos;s stdin data.  libcni will ensure that only keys</span><br><span class="line">	// in this map which match the capabilities of the plugin are passed</span><br><span class="line">	// to the plugin</span><br><span class="line">	CapabilityArgs map[string]interface&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="CNI开发参考资源"><a href="#CNI开发参考资源" class="headerlink" title="CNI开发参考资源"></a>CNI开发参考资源</h1><ul>
-<li><a href="https://github.com/keontang/k8s-notes/blob/master/kubernetes-network.md" target="_blank" rel="noopener">CNI源码分析</a>(比较系统)</li>
-<li><a href="http://www.cnblogs.com/YaoDD/p/7419383.html" target="_blank" rel="noopener">深入理解CNI</a></li>
-<li><a href="https://github.com/containernetworking/cni/blob/master/SPEC.md" target="_blank" rel="noopener">CNI spec 文档</a></li>
-<li>官方维护的plugin插件: <a href="https://github.com/containernetworking/plugins" target="_blank" rel="noopener">plugins</a></li>
-<li>用cnitool 调试自己编写的plugin：<a href="https://github.com/containernetworking/cni/tree/master/cnitool" target="_blank" rel="noopener">cnitool</a></li>
-<li>用脚本运行容器测试自己plugin:<a href="https://github.com/containernetworking/cni#running-a-docker-container-with-network-namespace-set-up-by-cni-plugins" target="_blank" rel="noopener">docker-run.sh</a></li>
-<li>官方plugin sample:<a href="https://github.com/containernetworking/plugins/tree/master/plugins/sample" target="_blank" rel="noopener">sample</a></li>
-</ul>
-<h1 id="kubelet原理"><a href="#kubelet原理" class="headerlink" title="kubelet原理"></a>kubelet原理</h1><ul>
-<li><a href="https://feisky.gitbooks.io/kubernetes/components/kubelet.html" target="_blank" rel="noopener">Kubernetes指南 kubelet</a></li>
-<li><a href="http://cizixs.com/2016/10/25/kubernetes-intro-kubelet" target="_blank" rel="noopener">kubernetes 简介：kubelet 和 pod</a>  <ul>
-<li>它的核心工作是监听 apiserver,配置目录(默认/etc/kubernetes/manifests/)等清单，一旦发现当前节点的 pod 配置发生变化，就根据最新的配置执行响应的动作，保证运行的 pod 状态和期望的一致。<ul>
-<li>如果发现本地的Pod被修改，则Kubelet会做出相应的修改，比如删除Pod中某个容器时，则通过Docker Client删除该容器。 如果发现删除本节点的Pod，则删除相应的Pod，并通过Docker Client删除Pod中的容器。</li>
-</ul>
-</li>
-<li>定时汇报当前节点的状态给 apiserver，以供调度的时候使用，通过cAdvisor监控节点和容器的资源。</li>
-<li>用“kubernetes/pause”镜像为每个Pod创建一个容器。Pause容器用于接管Pod中所有其他容器的网络。每创建一个新的Pod，Kubelet都会先创建一个Pause容器，然后创建其他容器。</li>
-</ul>
-</li>
-</ul>
-<h1 id="kubelet源码分析"><a href="#kubelet源码分析" class="headerlink" title="kubelet源码分析"></a>kubelet源码分析</h1><p><a href="http://cizixs.com/2017/06/06/kubelet-source-code-analysis-part-1" target="_blank" rel="noopener">kubelet 源码分析：启动流程</a> （v1.5.0版本)</p>
-<ul>
-<li>解析参数配置信息等初始化准备后， 创建kubeDeps这个对象：<ul>
-<li>其实它内部保存了 kubelet 各个重要组件的对象，之所以要把它作为参数传递，是为了实现 dependency injection。简单地说，就是把 kubelet 依赖的组件对象作为参数传进来，这样可以控制 kubelet 的行为。比如在测试的时候，只要构建 fake 的组件实现，就能很轻松进行测试。KubeDeps 包含的组件很多，下面列出一些：</li>
-<li>CAdvisorInterface：提供 cAdvisor 接口功能的组件，负责收集容器的监控信息</li>
-<li>DockerClient：docker 客户端，用来和 docker 交互</li>
-<li>KubeClient：apiserver 客户端，用来和 api server 通信</li>
-<li>Mounter：执行 mount 相关操作</li>
-<li>NetworkPlugins：网络插件，执行网络设置工作</li>
-<li>VolumePlugins：volume 插件，执行 volume 设置工作</li>
-</ul>
-</li>
-<li>RunKubelet 函数:<ul>
-<li>通过 builder 创建出来 Kubelet对象（pkg/kubelet/kubelet.go#NewMainKubelet）</li>
-<li>根据运行模式，运行 Kubelet对象，各种组件以 goroutine运行启动<ul>
-<li>异步事件驱动：syncLoop 是 kubelet 的主循环方法，它从不同的管道（文件、URL 和 apiserver）监听变化，并把它们汇聚起来。当有新的变化发生时，它会调用对应的处理函数，保证 pod 处于期望的状态。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>kubelet对象 中包含的重要对象：<ul>
-<li>podConfig：这个对象里面会从文件、网络和 apiserver 三个来源中汇聚节点要运行的 pod 信息，并通过管道发送出来，读取这个管道就能获取实时的 pod 最新配置</li>
-<li>runtime：容器运行时，对容器引擎（docker 或者 rkt）的一层封装，负责调用容器引擎接口管理容器的状态，比如启动、暂停、杀死容器等</li>
-<li>probeManager：如果 pod 配置了状态监测，那么 probeManager 会定时检查 pod 是否正常工作，并通过 statusManager 向 apiserver 更新 pod 的状态</li>
-<li>volumeManager：负责容器需要的 volume 管理。检测某个 volume 是否已经 mount、获取 pod 使用的 volume 等</li>
-<li>podWorkers：具体的执行者，每次有 pod 需要更新的时候都会发送给它</li>
-<li>podManager：缓存了 pod 的信息，是所有需要该信息都会去访问的地方</li>
-<li>nodeLister：能够读取 apiserver 中节点的信息</li>
-</ul>
-</li>
-</ul>
-<p> <a href="http://m.blog.csdn.net/zhonglinzhang/article/details/75005851" target="_blank" rel="noopener">kubelet源码分析－启动运行与信息处理</a><br><a href="http://cizixs.com/2017/06/07/kubelet-source-code-analysis-part-2" target="_blank" rel="noopener">kubelet 源码分析：pod 新建流程</a>（v1.5.0版本)：</p>
-<ul>
-<li>pod的创建顺序留意点：<ul>
-<li>创建 pod 的数据目录，存放 volume 和 plugin 信息</li>
-<li>如果定义了 PV，等待所有的 volume mount 完成（volumeManager 会在后台做这些事情）</li>
-<li>如果有 image secrets，去 apiserver 获取对应的 secrets 数据</li>
-<li>调用 container runtime 的 SyncPod 方法，去实现真正的容器创建逻辑<ul>
-<li>通过 docker 创建出来一个运行的 pause 容器(Pause容器用于接管Pod中所 有其他容器的网络)。</li>
-<li>网络配置：如果 pod 是主机模式，容器也是；其他情况下，<strong>容器会使用 None 网络模式，让 kubelet 的网络插件自己进行网络配置</strong>。</li>
-</ul>
-</li>
-</ul>
+<li><p>分布式底层原理（万变不离其宗）</p>
 </li>
 </ul>
 <hr>
-<p>文章出处： <a href="https://yucs.github.io/2017/12/06/2017-12-6-CNI/">https://yucs.github.io/2017/12/06/2017-12-6-CNI/</a></p>
-<p>markdown文件放在 <a href="https://github.com/yucs/yucs-awesome-resource" target="_blank" rel="noopener">github.com/yucs/yucs-awesome-resource</a> 持续更新，欢迎star ,watch</p>
-<p>如有出入请请教，文章持续更新中…</p>
+<h1 id="极客时间-陈皓专栏"><a href="#极客时间-陈皓专栏" class="headerlink" title="极客时间:陈皓专栏"></a><strong><a href="https://time.geekbang.org/column/intro/48" target="_blank" rel="noopener">极客时间:陈皓专栏</a></strong></h1><ul>
+<li>陈皓的blog（<a href="https://coolshell.cn/" target="_blank" rel="noopener">coolshell.</a>）,我想对于技术人，或多或少都有看过他的文章，文章深刻。</li>
+<li>陈皓大神根据自己的资深实战经验来谈分布式系统的见解和思考，10几年的精华总结，干货满满，见解深刻，我想对于技术人都大有益处。</li>
+</ul>
+<h1 id="《大数据日知录-架构与算法》"><a href="#《大数据日知录-架构与算法》" class="headerlink" title="《大数据日知录__架构与算法》"></a><strong>《大数据日知录__架构与算法》</strong></h1><ul>
+<li>看书名容易误认为主要讲大数据相关的，比如主要讲hadoop,hbase,spark等这几大代表项目。</li>
+<li>从我角度看，是分布式系统的“百科全书”，质量比较高的书，整体上偏重技术架构方面，基本都覆盖了分布式系统中涉及到的算法，分布式资源调度，消息队列，分布式存储等等，都配有相对于的主流的开源项目，分析其框架原理，列出的文献资源也很好。</li>
+<li>以本书为导向，配合coruseara 上视频，再到ｓｌｉｄｅｓｈａｒｅ上找相关的ｐpt，扩展学习了解相关的算法，无论了解新的分布式项目或者设计一个分布式系统，或多或少都会涉及到这些！</li>
+<li>毕竟，对于分布式系统来说，相似的场景本质要解决的问题是相似的。</li>
+</ul>
+<h1 id="《分布式系统原理介绍》"><a href="#《分布式系统原理介绍》" class="headerlink" title="《分布式系统原理介绍》"></a><strong>《分布式系统原理介绍》</strong></h1><p>主要是作者 自己在学习、开发分布式系统过程中获得的一些理论与实践进行总结（主要工程实践中应用广泛、简单有效的分布式理论、算法、协议数据分片,路由，副本协议，lease机制，一致性哈希，MVCC,两阶段提交，日记技术,CAP,paxos协议），是很不错的参考学习资料。</p>
+<p>可参考 coruseara 相关视频:</p>
+<ul>
+<li>《Cloud Computing Concepts》</li>
+<li>《Cloud Computing Concepts: Part 2》</li>
+</ul>
+<h1 id="《大型网站技术架构：核心原理与案例分析》"><a href="#《大型网站技术架构：核心原理与案例分析》" class="headerlink" title="《大型网站技术架构：核心原理与案例分析》"></a><strong>《大型网站技术架构：核心原理与案例分析》</strong></h1><p>  通俗易懂，可以算是大型网站架构入门的科普。 </p>
+<h1 id="《NoSQL精粹》"><a href="#《NoSQL精粹》" class="headerlink" title="《NoSQＬ精粹》"></a><strong>《NoSQＬ精粹》</strong></h1><p>  这是一本非常不错的 NoSQL领域入门书籍，通俗易懂，讲解nosql分类,使用场景，及其基本原理。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><!--- [每个架构师都应该研究下康威定律](http://www.infoq.com/cn/articles/every-architect-should-study-conway-law/) -->
+<ul>
+<li><p><a href="github.com/theanalyst/awesome-distributed-systems">awesome-distributed-systems</a></p>
+</li>
+<li><p><a href="http://duanple.blog.163.com/blog/static/709717672011330101333271/" target="_blank" rel="noopener">分布式系统领域经典论文翻译集</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -573,7 +495,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+            <a href="/tags/分布式系统/" rel="tag"># 分布式系统</a>
           
         </div>
       
@@ -586,8 +508,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/01/2017-12-1-cryptology2/" rel="next" title="《图解密码技术》笔记（二）">
-                <i class="fa fa-chevron-left"></i> 《图解密码技术》笔记（二）
+              <a href="/2017/12/25/2017-12-25-kubernetes_interface/" rel="next" title="kubernetes的思考和那些标准">
+                <i class="fa fa-chevron-left"></i> kubernetes的思考和那些标准
               </a>
             
           </div>
@@ -595,10 +517,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/09/2017-12-9-分布式系统原理之基础介绍/" rel="prev" title=" 分布式系统之基础介绍">
-                 分布式系统之基础介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -791,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概要"><span class="nav-number">1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNI工作原理"><span class="nav-number">2.</span> <span class="nav-text">CNI工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNI开发参考资源"><span class="nav-number">3.</span> <span class="nav-text">CNI开发参考资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubelet原理"><span class="nav-number">4.</span> <span class="nav-text">kubelet原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubelet源码分析"><span class="nav-number">5.</span> <span class="nav-text">kubelet源码分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#思考"><span class="nav-number">1.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#极客时间-陈皓专栏"><span class="nav-number">2.</span> <span class="nav-text">极客时间:陈皓专栏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#《大数据日知录-架构与算法》"><span class="nav-number">3.</span> <span class="nav-text">《大数据日知录__架构与算法》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#《分布式系统原理介绍》"><span class="nav-number">4.</span> <span class="nav-text">《分布式系统原理介绍》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#《大型网站技术架构：核心原理与案例分析》"><span class="nav-number">5.</span> <span class="nav-text">《大型网站技术架构：核心原理与案例分析》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#《NoSQL精粹》"><span class="nav-number">6.</span> <span class="nav-text">《NoSQＬ精粹》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>
@@ -945,9 +863,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://yucs.github.io/2017/12/06/2017-12-6-CNI/';
-          this.page.identifier = '2017/12/06/2017-12-6-CNI/';
-          this.page.title = 'Kubernetes网络插件CNI学习整理';
+          this.page.url = 'https://yucs.github.io/2018/01/04/2018-1-4-分布式系统资源推荐/';
+          this.page.identifier = '2018/01/04/2018-1-4-分布式系统资源推荐/';
+          this.page.title = ' 分布式系统之学习资源推荐';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://http-yucs-github-io.disqus.com/embed.js';
