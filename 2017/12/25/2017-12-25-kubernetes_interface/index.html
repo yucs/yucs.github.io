@@ -95,19 +95,19 @@
 
 
 
-<meta name="description" content="思考 CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准: 部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。 稳定标准化方面：各种标准化被业界统一认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。 开发定制方面:整体架构的优雅灵活，系统可扩展性好，根据">
+<meta name="description" content="思考 CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准:  部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。 稳定标准化方面：各种标准化被业界统一认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。 开发定制方面:整体架构的优雅灵活，系统可扩展性好，根">
 <meta name="keywords" content="Kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kubernetes的思考和那些标准">
 <meta property="og:url" content="https://yucs.github.io/2017/12/25/2017-12-25-kubernetes_interface/index.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
-<meta property="og:description" content="思考 CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准: 部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。 稳定标准化方面：各种标准化被业界统一认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。 开发定制方面:整体架构的优雅灵活，系统可扩展性好，根据需求在不侵入源码下，可定制性强（client-go项目对开发友好），这样才能更好">
+<meta property="og:description" content="思考 CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准:  部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。 稳定标准化方面：各种标准化被业界统一认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。 开发定制方面:整体架构的优雅灵活，系统可扩展性好，根据需求在不侵入源码下，可定制性强（client-go项目对开发友好），这样才能更">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yucs.github.io/picture/K8S_CRI.png">
-<meta property="og:updated_time" content="2018-01-04T10:11:49.000Z">
+<meta property="og:updated_time" content="2018-01-20T01:28:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes的思考和那些标准">
-<meta name="twitter:description" content="思考 CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准: 部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。 稳定标准化方面：各种标准化被业界统一认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。 开发定制方面:整体架构的优雅灵活，系统可扩展性好，根据需求在不侵入源码下，可定制性强（client-go项目对开发友好），这样才能更好">
+<meta name="twitter:description" content="思考 CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准:  部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。 稳定标准化方面：各种标准化被业界统一认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。 开发定制方面:整体架构的优雅灵活，系统可扩展性好，根据需求在不侵入源码下，可定制性强（client-go项目对开发友好），这样才能更">
 <meta name="twitter:image" content="https://yucs.github.io/picture/K8S_CRI.png">
 
 
@@ -414,15 +414,14 @@
 
       
         <h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><ul>
-<li>CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准:<ul>
+<li><p>CNCF生态被业界认可，在容器编排领域，K8s已然是事实标准:</p>
+<ul>
 <li>部署方面：kubernetes及社区 已经能够简单快速的搭建和部署 ，这样才能更好的普及。</li>
 <li>稳定标准化方面：各种标准化被业界统一认可，核心功能整体架构等 趋于稳定；标准化某种意义就是避免被绑架。</li>
 <li>开发定制方面:整体架构的优雅灵活，系统可扩展性好，根据需求在不侵入源码下，可定制性强（client-go项目对开发友好），这样才能更好的解决各公司内部需求，实践落地成功。   </li>
 <li>活跃度方面：贡献参与者多，社区活跃度高，各大公司的认可，无论存储，网络，容器方面都提供更多现成的选择，功能也越来越丰富，生态整体向好。</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>在kubernetes和docker两大生态竞争中，毫无疑问kubernetes已胜出,k8s已是大趋势。</p>
 </li>
 <li><p>开源也是场各大公司之间的博弈，无烟的战场，谁掌握了标准的制定，就占领了制高点,一言不合就可以让竞争对手举步维艰。</p>
@@ -431,6 +430,7 @@
 <h1 id="CNCF"><a href="#CNCF" class="headerlink" title="CNCF"></a><a href="https://www.cncf.io/" target="_blank" rel="noopener">CNCF</a></h1><p><a href="https://github.com/cncf/landscape" target="_blank" rel="noopener">Cloud Native Landscape</a></p>
 <p><a href="https://www.cncf.io/about/charter/" target="_blank" rel="noopener">CNCF charter</a></p>
 <p><a href="http://dockone.io/article/3006" target="_blank" rel="noopener">CNCF 云原生容器生态系统概要</a></p>
+<p><a href="http://cizixs.com/2017/12/30/cncf-cloud-native-landscape" target="_blank" rel="noopener">CNCF 云原生容器生态系统概要</a></p>
 <ul>
 <li>CNCF是一个开源Linux基金会，它致力于推进云端原生应用和服务的开发.</li>
 <li>CNCF 的一项重要承诺，就是为基于容器的各类技术的集成确立参考架。</li>
@@ -663,7 +663,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

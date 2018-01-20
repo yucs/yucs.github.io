@@ -98,7 +98,7 @@
 <meta name="description" content="概要 存储选型思考  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化） 数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求 简单方案可以采">
 <meta name="keywords" content="Kubernetes">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" Kubernetes之存储学习整理">
+<meta property="og:title" content=" Kubernetes之存储调研整理">
 <meta property="og:url" content="https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/index.html">
 <meta property="og:site_name" content="yucs&#39;s Blog">
 <meta property="og:description" content="概要 存储选型思考  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化） 数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求 简单方案可以采用如hostpath等本地存储方案，妥协点是数据无法迁移（当然，一般数据类系统">
@@ -107,9 +107,9 @@
 <meta property="og:image" content="https://yucs.github.io/picture/k8s_volume_arch2.png">
 <meta property="og:image" content="https://yucs.github.io/picture/PV_status.png">
 <meta property="og:image" content="https://yucs.github.io/picture/pvc_status.png">
-<meta property="og:updated_time" content="2017-12-28T13:41:27.000Z">
+<meta property="og:updated_time" content="2018-01-20T01:28:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Kubernetes之存储学习整理">
+<meta name="twitter:title" content=" Kubernetes之存储调研整理">
 <meta name="twitter:description" content="概要 存储选型思考  一般应用服务：应用级本身不做数据的冗余，为了数据的安全性，而且这类读写延迟高些也能接受（读写IO路径长，多副本机制，都会增加读写延迟），开源的主流使用ceph（默认采用三副本，设计优雅，理念也是自动化） 数据类服务：本身为了高可用而使用多副本冗余机制，通常对性能和延时有比较高的要求 简单方案可以采用如hostpath等本地存储方案，妥协点是数据无法迁移（当然，一般数据类系统">
 <meta name="twitter:image" content="https://yucs.github.io/picture/K8S_volume_arch.png">
 
@@ -145,7 +145,7 @@
 
 
 
-  <title> Kubernetes之存储学习整理 | yucs's Blog</title>
+  <title> Kubernetes之存储调研整理 | yucs's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"> Kubernetes之存储学习整理</h1>
+          <h1 class="post-title" itemprop="name headline"> Kubernetes之存储调研整理</h1>
         
 
         <div class="post-meta">
@@ -388,7 +388,7 @@
 
           
           
-             <span id="/2017/12/14/2017-12-14-kubernetes_volume/" class="leancloud_visitors" data-flag-title=" Kubernetes之存储学习整理">
+             <span id="/2017/12/14/2017-12-14-kubernetes_volume/" class="leancloud_visitors" data-flag-title=" Kubernetes之存储调研整理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -474,7 +474,7 @@
 <p><a href="http://newto.me/k8s-csi-design/" target="_blank" rel="noopener">Kubernetes存储介绍系列 ——CSI plugin设计</a></p>
 <p><a href="http://newto.me/k8s-adcontroller-caches/" target="_blank" rel="noopener">Kubernetes存储介绍系列 —— AttachDetachController1</a></p>
 <p><a href="http://dockone.io/article/2082" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（一）</a></p>
-<p><a href="http://dockone.io/article/2087" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（二）</a></p>
+<p><a href="http://dockone.io/article/2087" target="_blank" rel="noopener">Kubernetes 存储功能和源码深度解析（二）</a><br><a href="https://jimmysong.io/posts/kubernetes-persistent-volume/" target="_blank" rel="noopener">Kubernetes中的Persistent Volume解析</a></p>
 <p><img src="https://yucs.github.io/picture/K8S_volume_arch.png" alt="K8S_volume_arch"><br><img src="https://yucs.github.io/picture/k8s_volume_arch2.png" alt="k8s_volume_arch2"></p>
 <ul>
 <li>Volume Plugins <ul>
@@ -622,8 +622,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/21/2017-12-21-operator/" rel="prev" title="开发operator扩展kubernetes 资源整理">
-                开发operator扩展kubernetes 资源整理 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/21/2017-12-21-operator/" rel="prev" title="开发operator扩展kubernetes 调研整理">
+                开发operator扩展kubernetes 调研整理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -733,7 +733,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -973,7 +973,7 @@
         var disqus_config = function () {
           this.page.url = 'https://yucs.github.io/2017/12/14/2017-12-14-kubernetes_volume/';
           this.page.identifier = '2017/12/14/2017-12-14-kubernetes_volume/';
-          this.page.title = ' Kubernetes之存储学习整理';
+          this.page.title = ' Kubernetes之存储调研整理';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://http-yucs-github-io.disqus.com/embed.js';
